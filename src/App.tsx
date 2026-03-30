@@ -3,6 +3,7 @@ import Board from "./components/board/Board";
 import { ThemeToggle } from "./components/layout/ThemeToggle";
 import { useBoardStore } from "./store/useBoardStore";
 import { ProjectDashboard } from "./components/Dashboard";
+import { ProjectTimeline } from "./components/timeline/ProjectTimeline";
 
 const App = () => {
   const { activeTab, activeProjectId, projects } = useBoardStore();
@@ -13,7 +14,7 @@ const App = () => {
     switch (activeTab) {
       case "dashboard": return <ProjectDashboard project={activeProject} />;
       case "board": return <Board />;
-      case "timeline": return <div className="p-10 opacity-20 font-black italic text-4xl uppercase">Timeline Soon...</div>;
+      case "timeline": return <ProjectTimeline project={activeProject} />;
       case "team": return <div className="p-10 opacity-20 font-black italic text-4xl uppercase">Team Soon...</div>;
       default: return <Board />;
     }
