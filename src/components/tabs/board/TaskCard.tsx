@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { Calendar, CheckSquare, Zap } from "lucide-react";
 import { useState } from "react";
 import type { Priority, Task } from "@/types/board";
-import { TaskDetailsModal } from "./TaskDetailsModal";
+import { TaskDetailsModal } from "./task_modal/TaskDetailsModal";
 
 interface TaskCardProps {
   task: Task;
@@ -157,6 +157,7 @@ const TaskCard = ({ task, isOverlay }: TaskCardProps) => {
 
       {!isOverlay && (
         <TaskDetailsModal
+          key={task.id}
           task={task}
           open={isModalOpen}
           onOpenChange={setIsModalOpen}
