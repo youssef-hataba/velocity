@@ -1,153 +1,144 @@
 @import "tailwindcss";
 
-@theme {
-  /* Core Colors */
-  --color-background: light-dark(#ffffff, #0f172a);
-  --color-foreground: light-dark(#0f172a, #f8fafc);
+/* 1. إعداد الـ Dark Mode يدوياً لضمان التوافق التام */
+@custom-variant dark (&:where(.dark, .dark *));
 
-  /* Grayscale / Cinematic Greys */
-  --color-surface: #121826;     /* رصاصي عميق للخلفيات */
-  --color-steel: #272f3f;       /* رصاصي معدني للحدود والعناصر */
+@theme {
+  /* --- Light Mode Core (Ice Blue Aesthetic) --- */
+  --color-background: #e0e7ff; /* لبني باهت مريح للعين */
+  --color-foreground: #1e293b;
+
+  --color-surface: #f8fafc;     /* أفتح قليلاً من الخلفية للـ Sections */
+  --color-steel: #cbd5e1;       /* رمادي مزرق للحدود */
   --color-faint: #64748b;
 
-  --color-card: light-dark(#ffffff, #1e293b);
-  --color-card-foreground: light-dark(#1e293b, #f1f5f9);
+  --color-card: #ffffff;
+  --color-card-foreground: #1e293b;
 
   --color-primary: #3b82f6;
   --color-primary-hover: #2563eb;
   --color-primary-foreground: #ffffff;
 
-  --color-secondary: light-dark(#f1f5f9, #334155);
-  --color-secondary-foreground: light-dark(#475569, #f8fafc);
+  --color-secondary: #e2e8f0;
+  --color-secondary-foreground: #475569;
 
-  /* Semantic Priorities */
+  /* Semantic Colors */
   --color-urgent: #ef4444;
   --color-high: #f59e0b;
   --color-medium: #0ea5e9;
   --color-low: #a855f7;
 
-  /* UI Feedback & States */
+  /* Feedback States */
   --color-success: #22c55e;
   --color-warning: #facc15;
   --color-info: #3b82f6;
 
-  /* Layout Elements */
-  --color-border: light-dark(#e2e8f0, #1e293b);
-  --color-input: light-dark(#f8fafc, #0f172a);
+  /* Layout & Typography */
+  --color-border: #e2e8f0;
+  --color-input: #f8fafc;
   --color-ring: #3b82f6;
+  --color-muted: #64748b;
 
-  /* Typography States */
-  --color-muted: light-dark(#64748b, #94a3b8);
+  --color-popover: #ffffff;
+  --color-popover-foreground: #1e293b;
 
-  /* Popover & Tooltip Colors */
-  --color-popover: light-dark(#ffffff, #1a1f2e); /* Slightly lighter than background */
-  --color-popover-foreground: light-dark(#0f172a, #f8fafc);
-
-  /* Custom Shadows & Radius */
+  /* Effects */
   --radius-xl: 0.75rem;
   --radius-2xl: 1rem;
-  --shadow-cinematic: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --shadow-cinematic: 0 20px 50px -12px rgba(0, 0, 0, 0.08), 0 0 20px rgba(59, 130, 246, 0.03);
+  --shadow-glow: 0 0 15px rgba(59, 130, 246, 0.3);
 }
 
 @layer base {
-  *,
-  ::after,
-  ::before {
-    @apply border-border;
+  /* 2. Manual Dark Mode Overrides */
+  .dark {
+    --color-background: #020617; /* Midnight Navy */
+    --color-foreground: #f8fafc;
+    --color-surface: #0f172a;
+    --color-steel: #272f3f;
+    --color-faint: #94a3b8;
+    --color-card: #1e293b;
+    --color-card-foreground: #f1f5f9;
+    --color-secondary: #334155;
+    --color-secondary-foreground: #f8fafc;
+    --color-border: #1e293b;
+    --color-input: #0f172a;
+    --color-muted: #94a3b8;
+    --color-popover: #1a1f2e;
+    --color-popover-foreground: #f8fafc;
+    
+    /* Dark Shadow Tuning */
+    --shadow-cinematic: 0 20px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.05);
+  }
+
+  *, ::after, ::before {
+    @apply border-border transition-colors duration-500 ease-in-out;
   }
 
   body {
-    color-scheme: light dark;
-    @apply bg-background text-foreground transition-colors duration-300 antialiased;
+    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    font-feature-settings: "cv02", "cv03", "cv04", "tnum";
   }
 }
 
 @layer utilities {
+  /* Glassmorphism Styles */
   .glass {
     @apply bg-card/60 backdrop-blur-lg border border-white/5;
   }
-}
 
-@layer utilities {
-  /* تخصيص الـ Scrollbar للأجهزة التي تدعم الـ Webkit (Chrome, Safari, Edge) */
-  .custom-scrollbar::-webkit-scrollbar {
-    width: 5px; /* عرض نحيف جداً وسينمائي */
-    height: 5px;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-track {
-    background: transparent; /* التراك شفاف تماماً عشان ما يخربش الـ Glassmorphism */
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.05); /* لون خفيف جداً في البداية */
-    border-radius: 20px;
-    transition: all 0.3s ease;
-  }
-
-  /* يظهر بوضوح أكتر لما المستخدم يقرب الماوس من منطقة السكرول */
-  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-    background: rgba(59, 130, 246, 0.2); /* أزرق خفيف يتماشى مع الهوية */
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: rgba(59, 130, 246, 0.5) !important; /* يلمع أكتر عند اللمس */
-  }
-
-  /* لمتصفح Firefox */
-  .custom-scrollbar {
-    scrollbar-width: thin;
-    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
-  }
-
-  .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: transparent; /* مخفي تماماً */
-  }
-
-  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.1); /* يظهر بهدوء عند الـ Hover */
-  }
-}
-
-@layer utilities {
-  /* 1. Hide scrollbar but allow scrolling (used for the project rail) */
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-  .no-scrollbar {
-    -ms-overflow-style: none; /* IE and Edge */
-    scrollbar-width: none; /* Firefox */
-  }
-
-  /* 2. Professional Cinematic Shadow (Deep floating effect) */
-  .shadow-cinematic {
-    box-shadow: 
-      0 20px 50px -12px rgba(0, 0, 0, 0.5),
-      0 0 20px rgba(59, 130, 246, 0.05);
-  }
-
-  /* 3. Smooth Glassmorphism with variable intensity */
   .glass-premium {
     @apply bg-card/20 backdrop-blur-2xl border border-white/[0.03] shadow-2xl;
   }
 
-  /* 4. Text and Background subtle glows */
+  /* Glow Effects */
   .text-glow {
     text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
   }
-  
+
   .bg-glow-primary {
     background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
   }
 
-  /* 5. Custom Tooltip Indicator (The little arrow) */
-  .tooltip-arrow {
-    @apply absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-popover border-l border-b border-border rotate-45;
+  /* Custom Professional Scrollbar */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(148, 163, 184, 0.2);
+    border-radius: 20px;
+    border: 2px solid transparent;
+    background-clip: content-box;
+  }
+
+  .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05);
+    background-clip: content-box;
+  }
+
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.4);
+    background-clip: content-box;
+  }
+
+  /* Utility to hide scrollbar */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 }
 
+/* Typography & Alignment */
 .workspace-initials {
   @apply tracking-tighter leading-none flex items-center justify-center;
-  font-feature-settings: "tnum", "lnum"; /* Ensures numbers and letters align perfectly */
+  font-feature-settings: "tnum", "lnum";
 }

@@ -35,7 +35,7 @@ const Sidebar = () => {
             exit={{ opacity: 0, scale: 0.8, x: -10 }}
             whileHover={{ x: 5 }}
             onClick={() => false}
-            className="absolute left-18 top-12 z-50 h-14 w-8 bg-primary rounded-r-2xl text-white shadow-[10px_0_30px_rgba(var(--primary),0.3)] flex items-center justify-center transition-all cursor-pointer border-y border-r border-white/10"
+            className="absolute left-18 top-13 z-50 h-14 w-8 bg-primary rounded-r-2xl text-white shadow-[10px_0_30px_rgba(var(--primary),0.3)] flex items-center justify-center transition-all cursor-pointer border-y border-r border-white/10"
           >
             <ChevronRight size={18} strokeWidth={3} />
           </motion.button>

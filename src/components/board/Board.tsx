@@ -1,57 +1,64 @@
 import { useBoardStore } from "../../store/useBoardStore";
 import type { Status, Task } from "../../types/board";
 import Column from "./Column";
+import { LayoutGrid } from "lucide-react";
 
 const Board = () => {
-  // Select state from store
   const tasks = useBoardStore((state) => state.tasks);
   const activeProjectId = useBoardStore((state) => state.activeProjectId);
   const projects = useBoardStore((state) => state.projects);
 
-  // Get active project details
   const activeProject = projects.find((p) => p.id === activeProjectId);
-
-  // 1. Filter tasks by active project
   const projectTasks = tasks.filter((task) => task.projectId === activeProjectId);
 
-  // 2. Helper to get tasks by status
   const getTasksByStatus = (status: Status): Task[] => {
     return projectTasks.filter((task) => task.status === status);
   };
 
-  // أضفنا "In Review" هنا ليكون العمود الثالث قبل "Done"
   const COLUMNS: { title: string; status: Status }[] = [
     { title: "To Do", status: "todo" },
     { title: "In Progress", status: "in-progress" },
-    { title: "In Review", status: "review" }, 
+    { title: "In Review", status: "review" },
     { title: "Done", status: "done" },
   ];
 
   if (!activeProject) {
     return (
-      <div className="flex items-center justify-center h-full text-muted/50 font-medium italic">
-        Select a project from the sidebar to view the board
+      <div className="flex flex-col items-center justify-center h-full gap-4">
+        <div className="p-6 rounded-3xl bg-steel/5 border border-steel/10">
+          <LayoutGrid size={40} className="text-muted/20 animate-pulse" />
+        </div>
+        <p className="text-muted/50 font-black uppercase tracking-[0.2em] text-[10px]">
+          Select a project to initiate workflow
+        </p>
       </div>
     );
   }
 
   return (
-    <div className="h-full flex flex-col gap-8">
-      {/* Board Header Info */}
-      <header className="flex flex-col gap-1 shrink-0">
+    <div className="h-full flex flex-col gap-10">
+      <header className="flex flex-col gap-2 shrink-0 px-2">
         <div className="flex items-center gap-4">
-          <div className={`w-4 h-4 rounded-full ${activeProject.color} shadow-lg shadow-primary/20`} />
-          <h2 className="text-3xl font-black tracking-tight text-foreground">
+          <div
+            className={`w-5 h-5 rounded-full ${activeProject.color} shadow-[0_0_15px_rgba(var(--color-primary),0.4)] border-2 border-white/20 dark:border-white/10`}
+          />
+          <h2 className="text-4xl font-black tracking-tighter text-foreground drop-shadow-sm">
             {activeProject.name}
           </h2>
+          <span className="ml-2 px-3 py-1 rounded-full bg-steel/10 dark:bg-steel/40 text-muted/60 text-[10px] font-bold border border-steel/10">
+            {projectTasks.length} Total Tasks
+          </span>
         </div>
-        <p className="text-muted/60 text-[11px] font-bold uppercase tracking-[0.3em] px-8">
-          Workflow Management Center
-        </p>
+
+        <div className="flex items-center gap-3">
+          <div className="h-px w-8 bg-primary/40" />
+          <p className="text-muted/40 dark:text-muted-foreground/30 text-[11px] font-black uppercase tracking-widest">
+            Workflow Management Center
+          </p>
+        </div>
       </header>
 
-      {/* Columns Container */}
-      <div className="flex-1 flex gap-8 overflow-x-auto pb-6 custom-scrollbar scroll-smooth">
+      <div className="flex-1 flex gap-8 overflow-x-auto pb-10 pr-10 custom-scrollbar scroll-smooth items-start">
         {COLUMNS.map((col) => (
           <Column
             key={col.status}
