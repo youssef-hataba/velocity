@@ -10,68 +10,75 @@ interface ColumnProps {
 }
 
 const Column = ({ title, status, tasks, onTaskClick }: ColumnProps) => {
-  const statusConfig: Record<Status, { accent: string; dot: string }> = {
-    "todo": { accent: "from-steel/40 to-transparent", dot: "bg-faint" },
-    "in-progress": { accent: "from-primary/20 to-transparent", dot: "bg-primary shadow-glow" },
-    "review": { accent: "from-amber-500/20 to-transparent", dot: "bg-amber-500 shadow-glow" },
-    "done": { accent: "from-success/20 to-transparent", dot: "bg-success shadow-glow" },
+  // Using structural neutral accents instead of priority colors to prevent confusion
+  const statusConfig: Record<Status, { dot: string; glow: string }> = {
+    "todo": { dot: "bg-slate-400", glow: "shadow-none" },
+    "in-progress": { dot: "bg-blue-500", glow: "shadow-[0_0_12px_rgba(59,130,246,0.5)]" },
+    "review": { dot: "bg-amber-500", glow: "shadow-[0_0_12px_rgba(245,158,11,0.5)]" },
+    "done": { dot: "bg-emerald-500", glow: "shadow-[0_0_12px_rgba(16,185,129,0.5)]" },
   };
 
   const config = statusConfig[status];
 
   return (
-    <div className="flex flex-col w-90 min-w-70 h-full group/column relative rounded-3xl bg-surface/30 border border-steel/10 p-2 pb-0">
-      <header
-        className={`
-          relative p-4 rounded-2xl border border-white/5 
-          bg-linear-to-br ${config.accent} backdrop-blur-xl
-          flex items-center justify-between shadow-sm
-        `}
-      >
+    <div className="flex flex-col w-90 min-w-70 h-full group/column relative rounded-[2.5rem] bg-surface/20 
+    border border-steel/10 py-3 px-1 pb-0 backdrop-blur-sm transition-all duration-500 overflow-hidden">
+      
+      {/* Column Header - Neutral structural look */}
+      <header className="relative p-5 mx-2 rounded-[1.8rem] border border-black/5 dark:border-white/5 bg-white/40 dark:bg-card/20 backdrop-blur-2xl flex items-center justify-between shadow-sm group-hover/column:border-primary/20 transition-all duration-500">
         <div className="flex items-center gap-3">
-          <div className={`w-2 h-2 rounded-full ${config.dot}`} />
-          <h2 className="font-black text-[11px] uppercase tracking-[0.2em] text-foreground/80">
+          {/* Status Indicator Dot */}
+          <div className={`w-2.5 h-2.5 rounded-full ${config.dot} ${config.glow} transition-all duration-500`} />
+          
+          <h2 className="font-black text-[10px] uppercase tracking-[0.3em] text-foreground/70">
             {title}
           </h2>
-          <span className="bg-background/20 text-faint px-2 py-0.5 rounded-lg text-[10px] font-bold border border-white/5">
+
+          <div className="bg-steel/10 text-muted/60 px-2.5 py-0.5 rounded-full text-[9px] font-black border border-steel/5">
             {tasks.length}
-          </span>
+          </div>
         </div>
 
-        <button className="text-faint/40 hover:text-primary transition-colors duration-300">
+        <button className="text-muted/30 hover:text-primary transition-colors">
           <MoreHorizontal size={18} />
         </button>
       </header>
 
-      <div className="flex-1 overflow-y-auto space-y-4 px-2 custom-scrollbar scroll-smooth py-4">
+      {/* Task List Container */}
+      <div className="flex-1 overflow-y-auto space-y-5 px-2 custom-scrollbar scroll-smooth py-6 mt-2">
         {tasks.length > 0 ? (
-          tasks.map((task) => <TaskCard key={task.id} task={task} onClick={onTaskClick} />)
+          tasks.map((task) => (
+            <TaskCard key={task.id} task={task} onClick={onTaskClick} />
+          ))
         ) : (
-          <div className="group/empty h-40 border-2 border-dashed border-steel/10 rounded-2xl flex flex-col items-center justify-center gap-3 transition-all hover:border-primary/20 hover:bg-primary/5">
-            <div className="p-3 rounded-full bg-surface/50 text-steel group-hover/empty:text-primary/40 transition-colors">
+          <div className="h-44 border-2 border-dashed rounded-4xl flex flex-col items-center justify-center 
+          gap-3 transition-all border-primary/10 bg-primary/2 group/empty">
+            <div className="p-3 rounded-2xl bg-steel/5 text-steel group-hover/empty:scale-110 group-hover/empty:text-primary/40 transition-all">
               <Plus size={20} />
             </div>
-            <p className="text-[10px] uppercase tracking-widest font-black text-faint/20 group-hover/empty:text-primary/40 transition-colors">
-              Empty Column
+            <p className="text-[9px] uppercase tracking-[0.2em] font-black text-muted/20 group-hover/empty:text-primary/40">
+              Empty Sequence
             </p>
           </div>
         )}
       </div>
 
-      <div className="absolute bottom-6 right-6">
-          <button
-            title="Add Task"
-            className="
-              w-11 h-11 rounded-2xl bg-primary text-white 
-              shadow-2xl shadow-primary/40 flex items-center justify-center 
-              hover:scale-110 active:scale-95 hover:rotate-90
-              transition-all duration-500 backdrop-blur-md border border-white/20
-              group/fab
-            "
-          >
-            <Plus size={22} strokeWidth={3} className="group-hover/fab:scale-110" />
-          </button>
-        </div>
+      {/* Floating Action Button (FAB) */}
+      <div className="absolute bottom-3 right-2">
+        <button
+          title="Add Task"
+          className="
+            w-12 h-12 rounded-2xl bg-primary text-white 
+            shadow-[0_15px_30px_-10px_rgba(59,130,246,0.5)] 
+            flex items-center justify-center 
+            hover:scale-110 active:scale-95 hover:rotate-90
+            transition-all duration-500 backdrop-blur-md border border-white/20
+            group/fab
+          "
+        >
+          <Plus size={24} strokeWidth={3} />
+        </button>
+      </div>
     </div>
   );
 };
