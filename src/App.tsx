@@ -2,9 +2,9 @@ import Sidebar from "./components/sidebar/Sidebar";
 import Board from "./components/board/Board";
 import { ThemeToggle } from "./components/layout/ThemeToggle";
 import { useBoardStore } from "./store/useBoardStore";
-import { ProjectDashboard } from "./components/Dashboard";
 import { ProjectTimeline } from "./components/timeline/ProjectTimeline";
 import { TeamTab } from "./components/team/TeamTab";
+import { ProjectDashboard } from "./components/dashboard/ProjectDashboard";
 
 const App = () => {
   const { activeTab, activeProjectId, projects } = useBoardStore();
