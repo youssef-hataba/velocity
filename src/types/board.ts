@@ -18,6 +18,7 @@ export interface Task {
   createdAt: string;
   startDate?: string;
   endDate?: string;
+  assigneeId?: string;
 }
 
 export interface Project {

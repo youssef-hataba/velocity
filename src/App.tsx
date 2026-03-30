@@ -4,6 +4,7 @@ import { ThemeToggle } from "./components/layout/ThemeToggle";
 import { useBoardStore } from "./store/useBoardStore";
 import { ProjectDashboard } from "./components/Dashboard";
 import { ProjectTimeline } from "./components/timeline/ProjectTimeline";
+import { TeamTab } from "./components/team/TeamTab";
 
 const App = () => {
   const { activeTab, activeProjectId, projects } = useBoardStore();
@@ -15,7 +16,7 @@ const App = () => {
       case "dashboard": return <ProjectDashboard project={activeProject} />;
       case "board": return <Board />;
       case "timeline": return <ProjectTimeline project={activeProject} />;
-      case "team": return <div className="p-10 opacity-20 font-black italic text-4xl uppercase">Team Soon...</div>;
+      case "team": return <TeamTab project={activeProject} tasks={useBoardStore.getState().tasks} />;
       default: return <Board />;
     }
   };

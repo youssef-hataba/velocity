@@ -1,142 +1,71 @@
 {
   "projects": [
-    { 
-      "id": "p1", 
-      "name": "Volicity Core", 
-      "color": "bg-blue-600",
-      "members": ["Youssef Hataba", "Ahmed Ali", "Sarah John"]
-    },
-    { 
-      "id": "p2", 
-      "name": "MooDist Studio", 
-      "color": "bg-purple-600",
-      "members": ["Youssef Hataba", "Omar Khaled"]
-    },
-    { 
-      "id": "p3", 
-      "name": "FlowCast AI", 
-      "color": "bg-emerald-600",
-      "members": ["Youssef Hataba", "Mostafa UI", "Elena Wick"]
-    }
+    { "id": "p1", "name": "Volicity", "color": "bg-blue-600", "members": ["Youssef Hataba", "Ahmed Ali", "Sarah John"] },
+    { "id": "p2", "name": "MooDist Studio", "color": "bg-purple-600", "members": ["Youssef Hataba", "Omar Khaled"] },
+    { "id": "p3", "name": "FlowCast AI", "color": "bg-emerald-600", "members": ["Youssef Hataba", "Mostafa UI", "Elena Wick"] }
   ],
   "tasks": [
-    {
-      "id": "t1",
-      "title": "Build Volicity Architecture",
-      "description": "Setup Zustand and TypeScript types for global state management.",
-      "status": "in-progress",
-      "priority": "urgent",
-      "projectId": "p1",
-      "startDate": "2026-03-25T00:00:00Z",
-      "endDate": "2026-03-31T00:00:00Z",
-      "createdAt": "2026-03-25T00:00:00Z",
+    { "id": "p1-t1", "title": "Architecture Setup", "status": "done", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
       "subTasks": [
-        { "id": "st1", "title": "Define Store Actions", "isCompleted": true },
-        { "id": "st2", "title": "Persist Middleware Setup", "isCompleted": false }
-      ]
+        { "id": "p1-st1", "title": "Zustand Store", "isCompleted": true },
+        { "id": "p1-st2", "title": "Type Definitions", "isCompleted": true }
+      ] 
     },
-    {
-      "id": "t9",
-      "title": "SEO Metadata Strategy",
-      "description": "Implement dynamic JSON-LD and OpenGraph tags for Speakefy platform.",
-      "status": "review",
-      "priority": "high",
-      "projectId": "p1",
-      "startDate": "2026-03-28T00:00:00Z",
-      "endDate": "2026-04-02T00:00:00Z",
-      "createdAt": "2026-03-28T14:20:00Z",
+    { "id": "p1-t2", "title": "Auth System", "status": "in-progress", "priority": "high", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-03-25T00:00:00Z", "endDate": "2026-03-28T00:00:00Z", "createdAt": "2026-03-24T00:00:00Z", 
       "subTasks": [
-        { "id": "st3", "title": "Config Next-SEO", "isCompleted": true },
-        { "id": "st4", "title": "Test on Social Debuggers", "isCompleted": false }
-      ]
+        { "id": "p1-st3", "title": "JWT Logic", "isCompleted": true },
+        { "id": "p1-st4", "title": "Login UI", "isCompleted": false }
+      ] 
     },
-    {
-      "id": "t10",
-      "title": "Framer Motion Page Transitions",
-      "description": "Add smooth cinematic transitions between dashboard routes.",
-      "status": "in-progress",
-      "priority": "medium",
-      "projectId": "p1",
-      "startDate": "2026-03-30T00:00:00Z",
-      "endDate": "2026-04-05T00:00:00Z",
-      "createdAt": "2026-03-30T10:00:00Z",
+    { "id": "p1-t3", "title": "Dashboard Layout", "status": "review", "priority": "medium", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-26T00:00:00Z", "endDate": "2026-03-29T00:00:00Z", "createdAt": "2026-03-25T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t4", "title": "Database Migration", "status": "done", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t5", "title": "API Documentation", "status": "todo", "priority": "low", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-05T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t6", "title": "Unit Testing", "status": "in-progress", "priority": "medium", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t7", "title": "Sidebar Navigation", "status": "done", "priority": "low", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t8", "title": "Error Handling", "status": "todo", "priority": "high", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-04-03T00:00:00Z", "endDate": "2026-04-07T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t9", "title": "Dark Mode Toggle", "status": "done", "priority": "low", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-24T00:00:00Z", "endDate": "2026-03-25T00:00:00Z", "createdAt": "2026-03-23T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t10", "title": "SEO Optimization", "status": "review", "priority": "medium", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [] },
+
+    { "id": "p2-t1", "title": "3D Canvas Setup", "status": "done", "priority": "urgent", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
       "subTasks": [
-        { "id": "st5", "title": "AnimatePresence Wrapper", "isCompleted": true },
-        { "id": "st6", "title": "Custom Page Exit Slide", "isCompleted": false }
-      ]
+        { "id": "p2-st1", "title": "Three.js Init", "isCompleted": true },
+        { "id": "p2-st2", "title": "Lighting Config", "isCompleted": true }
+      ] 
     },
-    {
-      "id": "t11",
-      "title": "Hoodie Previewer Logic",
-      "description": "Sync the custom product spinner with color selection state.",
-      "status": "review",
-      "priority": "urgent",
-      "projectId": "p2",
-      "startDate": "2026-03-28T00:00:00Z",
-      "endDate": "2026-03-31T00:00:00Z",
-      "createdAt": "2026-03-29T16:45:00Z",
+    { "id": "p2-t2", "title": "Texture Mapping", "status": "in-progress", "priority": "high", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-25T00:00:00Z", "endDate": "2026-03-29T00:00:00Z", "createdAt": "2026-03-24T00:00:00Z", 
       "subTasks": [
-        { "id": "st7", "title": "3D Model Asset Load", "isCompleted": true },
-        { "id": "st8", "title": "Color Switcher Event", "isCompleted": true }
-      ]
+        { "id": "p2-st3", "title": "UV Unwrapping", "isCompleted": true },
+        { "id": "p2-st4", "title": "Normal Maps", "isCompleted": false }
+      ] 
     },
-    {
-      "id": "t12",
-      "title": "N8N Order Automation",
-      "description": "Link Google Sheets with the restaurant stock management workflow.",
-      "status": "done",
-      "priority": "high",
-      "projectId": "p3",
-      "startDate": "2026-03-26T00:00:00Z",
-      "endDate": "2026-03-29T00:00:00Z",
-      "createdAt": "2026-03-28T09:00:00Z",
+    { "id": "p2-t3", "title": "UI Overlay Design", "status": "todo", "priority": "medium", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-05T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t4", "title": "Asset Export Pipeline", "status": "done", "priority": "low", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t5", "title": "Shader Optimization", "status": "review", "priority": "urgent", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-03-31T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t6", "title": "Mobile Responsiveness", "status": "in-progress", "priority": "medium", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-03T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t7", "title": "Performance Tuning", "status": "todo", "priority": "high", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-04T00:00:00Z", "endDate": "2026-04-08T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t8", "title": "Custom Cursor Logic", "status": "done", "priority": "low", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t9", "title": "Ambient Sound Setup", "status": "review", "priority": "low", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-30T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-29T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t10", "title": "Final Render Engine", "status": "todo", "priority": "urgent", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-04-05T00:00:00Z", "endDate": "2026-04-10T00:00:00Z", "createdAt": "2026-03-31T00:00:00Z", "subTasks": [] },
+
+    { "id": "p3-t1", "title": "LLM Integration", "status": "done", "priority": "urgent", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-25T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
       "subTasks": [
-        { "id": "st9", "title": "Webhook Configuration", "isCompleted": true },
-        { "id": "st10", "title": "Stock Calculation Logic", "isCompleted": true }
-      ]
+        { "id": "p3-st1", "title": "OpenAI API Link", "isCompleted": true },
+        { "id": "p3-st2", "title": "Prompt Engineering", "isCompleted": true }
+      ] 
     },
-    {
-      "id": "t13",
-      "title": "PDF Certificate Viewer",
-      "description": "Integrate a lightweight PDF viewer for Speakefy language certificates.",
-      "status": "todo",
-      "priority": "medium",
-      "projectId": "p1",
-      "startDate": "2026-04-01T00:00:00Z",
-      "endDate": "2026-04-04T00:00:00Z",
-      "createdAt": "2026-03-30T11:30:00Z",
+    { "id": "p3-t2", "title": "Vector DB Setup", "status": "in-progress", "priority": "high", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-26T00:00:00Z", "endDate": "2026-03-30T00:00:00Z", "createdAt": "2026-03-25T00:00:00Z", 
       "subTasks": [
-        { "id": "st11", "title": "React-PDF Setup", "isCompleted": false }
-      ]
+        { "id": "p3-st3", "title": "Pinecone Config", "isCompleted": true },
+        { "id": "p3-st4", "title": "Data Indexing", "isCompleted": false }
+      ] 
     },
-    {
-      "id": "t14",
-      "title": "Luxury Editorial Shop Page",
-      "description": "Design a high-end typography-focused product listing for MooDist.",
-      "status": "todo",
-      "priority": "low",
-      "projectId": "p2",
-      "startDate": "2026-03-31T00:00:00Z",
-      "endDate": "2026-04-07T00:00:00Z",
-      "createdAt": "2026-03-30T13:00:00Z",
-      "subTasks": [
-        { "id": "st12", "title": "Typography Selection", "isCompleted": false },
-        { "id": "st13", "title": "Grid Animation", "isCompleted": false }
-      ]
-    },
-    {
-      "id": "t15",
-      "title": "FlowCast AI Brand Assets",
-      "description": "Generate high-resolution cinematic logos for the new startup launch.",
-      "status": "review",
-      "priority": "medium",
-      "projectId": "p3",
-      "startDate": "2026-03-29T00:00:00Z",
-      "endDate": "2026-04-02T00:00:00Z",
-      "createdAt": "2026-03-30T12:00:00Z",
-      "subTasks": [
-        { "id": "st14", "title": "Logo Export @4x", "isCompleted": true }
-      ]
-    }
+    { "id": "p3-t3", "title": "Natural Language Search", "status": "todo", "priority": "medium", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-04-02T00:00:00Z", "endDate": "2026-04-08T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t4", "title": "Voice to Text Engine", "status": "done", "priority": "high", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t5", "title": "AI Analytics Dashboard", "status": "review", "priority": "medium", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-04-01T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t6", "title": "Sentiment Analysis", "status": "in-progress", "priority": "low", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-03T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t7", "title": "Real-time Training", "status": "todo", "priority": "urgent", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-04-04T00:00:00Z", "endDate": "2026-04-10T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t8", "title": "Chat History Backup", "status": "done", "priority": "low", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t9", "title": "User Feedback Loop", "status": "review", "priority": "medium", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-03-30T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-29T00:00:00Z", "subTasks": [] },
+    { "id": "p3-t10", "title": "Launch Landing Page", "status": "todo", "priority": "high", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-04-06T00:00:00Z", "endDate": "2026-04-12T00:00:00Z", "createdAt": "2026-03-31T00:00:00Z", "subTasks": [] }
   ]
 }
