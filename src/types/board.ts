@@ -7,6 +7,12 @@ export interface SubTask {
   isCompleted: boolean;
 }
 
+export interface TaskHistory {
+  action: string;
+  user: string;
+  date: string;
+}
+
 export interface Task {
   id: string;
   title: string;
@@ -19,6 +25,7 @@ export interface Task {
   startDate?: string;
   endDate?: string;
   assigneeId?: string;
+  history?: TaskHistory[];
 }
 
 export interface Project {

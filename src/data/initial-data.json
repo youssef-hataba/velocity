@@ -5,67 +5,110 @@
     { "id": "p3", "name": "FlowCast AI", "color": "#059669", "members": ["Youssef Hataba", "Mostafa UI", "Elena Wick"] }
   ],
   "tasks": [
-    { "id": "p1-t1", "title": "Architecture Setup", "status": "done", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
+    {
+      "id": "p1-t1",
+      "title": "Architecture Setup",
+      "description": "Establish core project structure using Next.js 14 and atomic design patterns.",
+      "status": "done",
+      "priority": "urgent",
+      "projectId": "p1",
+      "assigneeId": "Youssef Hataba",
+      "startDate": "2026-03-20T00:00:00Z",
+      "endDate": "2026-03-24T00:00:00Z",
+      "createdAt": "2026-03-19T00:00:00Z",
       "subTasks": [
         { "id": "p1-st1", "title": "Zustand Store", "isCompleted": true },
         { "id": "p1-st2", "title": "Type Definitions", "isCompleted": true }
-      ] 
+      ],
+      "history": [
+        { "action": "created task", "user": "Youssef Hataba", "date": "2026-03-19T10:00:00Z" },
+        { "action": "moved to Done", "user": "Youssef Hataba", "date": "2026-03-24T16:45:00Z" }
+      ]
     },
-    { "id": "p1-t2", "title": "Auth System", "status": "in-progress", "priority": "high", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-03-25T00:00:00Z", "endDate": "2026-03-28T00:00:00Z", "createdAt": "2026-03-24T00:00:00Z", 
+    {
+      "id": "p1-t2",
+      "title": "Auth System",
+      "description": "Secure authentication flow using NextAuth and JWT session management.",
+      "status": "in-progress",
+      "priority": "high",
+      "projectId": "p1",
+      "assigneeId": "Ahmed Ali",
+      "startDate": "2026-03-25T00:00:00Z",
+      "endDate": "2026-03-28T00:00:00Z",
+      "createdAt": "2026-03-24T00:00:00Z",
       "subTasks": [
         { "id": "p1-st3", "title": "JWT Logic", "isCompleted": true },
         { "id": "p1-st4", "title": "Login UI", "isCompleted": false }
-      ] 
+      ],
+      "history": [
+        { "action": "started coding", "user": "Ahmed Ali", "date": "2026-03-25T11:00:00Z" }
+      ]
     },
-    { "id": "p1-t3", "title": "Dashboard Layout", "status": "review", "priority": "medium", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-26T00:00:00Z", "endDate": "2026-03-29T00:00:00Z", "createdAt": "2026-03-25T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t4", "title": "Database Migration", "status": "done", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t5", "title": "API Documentation", "status": "todo", "priority": "low", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-05T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t6", "title": "Unit Testing", "status": "in-progress", "priority": "medium", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t7", "title": "Sidebar Navigation", "status": "done", "priority": "low", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t8", "title": "Error Handling", "status": "todo", "priority": "high", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-04-03T00:00:00Z", "endDate": "2026-04-07T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t9", "title": "Dark Mode Toggle", "status": "done", "priority": "low", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-24T00:00:00Z", "endDate": "2026-03-25T00:00:00Z", "createdAt": "2026-03-23T00:00:00Z", "subTasks": [] },
-    { "id": "p1-t10", "title": "SEO Optimization", "status": "review", "priority": "medium", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [] },
+    { "id": "p1-t3", "title": "Dashboard Layout", "description": "Main dashboard shell with sidebar.", "status": "review", "priority": "medium", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-26T00:00:00Z", "endDate": "2026-03-29T00:00:00Z", "createdAt": "2026-03-25T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t4", "title": "DB Migration", "description": "Moving legacy SQL data to Prisma.", "status": "done", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t5", "title": "API Docs", "description": "Swagger documentation for endpoints.", "status": "todo", "priority": "low", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-05T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t6", "title": "Unit Testing", "description": "Vitest setup for utility functions.", "status": "in-progress", "priority": "medium", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t7", "title": "Cloudinary Setup", "description": "Image storage and optimization.", "status": "todo", "priority": "medium", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-04-02T00:00:00Z", "endDate": "2026-04-04T00:00:00Z", "createdAt": "2026-03-31T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t8", "title": "Dark Mode", "description": "Tailwind theme switching logic.", "status": "done", "priority": "low", "projectId": "p1", "assigneeId": "Sarah John", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t9", "title": "SEO Config", "description": "Next.js Metadata API optimization.", "status": "review", "priority": "medium", "projectId": "p1", "assigneeId": "Ahmed Ali", "startDate": "2026-04-05T00:00:00Z", "endDate": "2026-04-07T00:00:00Z", "createdAt": "2026-04-01T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p1-t10", "title": "Stripe Connect", "description": "Payment gateway integration.", "status": "todo", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-04-10T00:00:00Z", "endDate": "2026-04-15T00:00:00Z", "createdAt": "2026-04-01T00:00:00Z", "subTasks": [], "history": [] },
 
-    { "id": "p2-t1", "title": "3D Canvas Setup", "status": "done", "priority": "urgent", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
+    {
+      "id": "p2-t1",
+      "title": "3D Scene Init",
+      "description": "Setup Three.js lighting, camera and shadows for model viewing.",
+      "status": "done",
+      "priority": "urgent",
+      "projectId": "p2",
+      "assigneeId": "Youssef Hataba",
+      "startDate": "2026-03-20T00:00:00Z",
+      "endDate": "2026-03-24T00:00:00Z",
+      "createdAt": "2026-03-19T00:00:00Z",
       "subTasks": [
-        { "id": "p2-st1", "title": "Three.js Init", "isCompleted": true },
-        { "id": "p2-st2", "title": "Lighting Config", "isCompleted": true }
-      ] 
+        { "id": "p2-st1", "title": "Light Setup", "isCompleted": true },
+        { "id": "p2-st2", "title": "Orbit Controls", "isCompleted": true }
+      ],
+      "history": [
+        { "action": "initialized scene", "user": "Youssef Hataba", "date": "2026-03-19T12:00:00Z" }
+      ]
     },
-    { "id": "p2-t2", "title": "Texture Mapping", "status": "in-progress", "priority": "high", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-25T00:00:00Z", "endDate": "2026-03-29T00:00:00Z", "createdAt": "2026-03-24T00:00:00Z", 
-      "subTasks": [
-        { "id": "p2-st3", "title": "UV Unwrapping", "isCompleted": true },
-        { "id": "p2-st4", "title": "Normal Maps", "isCompleted": false }
-      ] 
-    },
-    { "id": "p2-t3", "title": "UI Overlay Design", "status": "todo", "priority": "medium", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-05T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t4", "title": "Asset Export Pipeline", "status": "done", "priority": "low", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t5", "title": "Shader Optimization", "status": "review", "priority": "urgent", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-03-31T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t6", "title": "Mobile Responsiveness", "status": "in-progress", "priority": "medium", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-03T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t7", "title": "Performance Tuning", "status": "todo", "priority": "high", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-04T00:00:00Z", "endDate": "2026-04-08T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t8", "title": "Custom Cursor Logic", "status": "done", "priority": "low", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t9", "title": "Ambient Sound Setup", "status": "review", "priority": "low", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-30T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-29T00:00:00Z", "subTasks": [] },
-    { "id": "p2-t10", "title": "Final Render Engine", "status": "todo", "priority": "urgent", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-04-05T00:00:00Z", "endDate": "2026-04-10T00:00:00Z", "createdAt": "2026-03-31T00:00:00Z", "subTasks": [] },
+    { "id": "p2-t2", "title": "UV Mapping", "description": "Applying PBR textures to character models.", "status": "in-progress", "priority": "high", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-25T00:00:00Z", "endDate": "2026-03-29T00:00:00Z", "createdAt": "2026-03-24T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t3", "title": "UI Overlay", "description": "HTML/CSS layer over the 3D canvas.", "status": "todo", "priority": "medium", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-05T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t4", "title": "Export GLB", "description": "Optimizing mesh for web delivery.", "status": "done", "priority": "low", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t5", "title": "Shaders Setup", "description": "Custom GLSL water shader.", "status": "review", "priority": "high", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-03-31T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t6", "title": "Mobile Touch", "description": "Gesture support for 3D rotation.", "status": "in-progress", "priority": "medium", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-03T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t7", "title": "Audio Engine", "description": "Spatial audio with Three.js PositionalAudio.", "status": "todo", "priority": "low", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-05T00:00:00Z", "endDate": "2026-04-08T00:00:00Z", "createdAt": "2026-04-01T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t8", "title": "Post-Processing", "description": "Bloom and Vignette effects.", "status": "todo", "priority": "medium", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-04-06T00:00:00Z", "endDate": "2026-04-10T00:00:00Z", "createdAt": "2026-04-01T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t9", "title": "Physics Setup", "description": "Cannon.js collision detection.", "status": "review", "priority": "high", "projectId": "p2", "assigneeId": "Youssef Hataba", "startDate": "2026-04-01T00:00:00Z", "endDate": "2026-04-04T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p2-t10", "title": "Video Recording", "description": "Capture canvas stream to MP4.", "status": "todo", "priority": "low", "projectId": "p2", "assigneeId": "Omar Khaled", "startDate": "2026-04-12T00:00:00Z", "endDate": "2026-04-15T00:00:00Z", "createdAt": "2026-04-02T00:00:00Z", "subTasks": [], "history": [] },
 
-    { "id": "p3-t1", "title": "LLM Integration", "status": "done", "priority": "urgent", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-25T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
+    {
+      "id": "p3-t1",
+      "title": "LLM Middleware",
+      "description": "Node.js proxy to OpenAI with rate limiting.",
+      "status": "done",
+      "priority": "urgent",
+      "projectId": "p3",
+      "assigneeId": "Youssef Hataba",
+      "startDate": "2026-03-20T00:00:00Z",
+      "endDate": "2026-03-25T00:00:00Z",
+      "createdAt": "2026-03-19T00:00:00Z",
       "subTasks": [
-        { "id": "p3-st1", "title": "OpenAI API Link", "isCompleted": true },
-        { "id": "p3-st2", "title": "Prompt Engineering", "isCompleted": true }
-      ] 
+        { "id": "p3-st1", "title": "API Proxy", "isCompleted": true },
+        { "id": "p3-st2", "title": "Token Limiter", "isCompleted": true }
+      ],
+      "history": [
+        { "action": "created middleware", "user": "Youssef Hataba", "date": "2026-03-19T11:00:00Z" }
+      ]
     },
-    { "id": "p3-t2", "title": "Vector DB Setup", "status": "in-progress", "priority": "high", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-26T00:00:00Z", "endDate": "2026-03-30T00:00:00Z", "createdAt": "2026-03-25T00:00:00Z", 
-      "subTasks": [
-        { "id": "p3-st3", "title": "Pinecone Config", "isCompleted": true },
-        { "id": "p3-st4", "title": "Data Indexing", "isCompleted": false }
-      ] 
-    },
-    { "id": "p3-t3", "title": "Natural Language Search", "status": "todo", "priority": "medium", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-04-02T00:00:00Z", "endDate": "2026-04-08T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t4", "title": "Voice to Text Engine", "status": "done", "priority": "high", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t5", "title": "AI Analytics Dashboard", "status": "review", "priority": "medium", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-04-01T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t6", "title": "Sentiment Analysis", "status": "in-progress", "priority": "low", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-03T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t7", "title": "Real-time Training", "status": "todo", "priority": "urgent", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-04-04T00:00:00Z", "endDate": "2026-04-10T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t8", "title": "Chat History Backup", "status": "done", "priority": "low", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-21T00:00:00Z", "endDate": "2026-03-23T00:00:00Z", "createdAt": "2026-03-20T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t9", "title": "User Feedback Loop", "status": "review", "priority": "medium", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-03-30T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-29T00:00:00Z", "subTasks": [] },
-    { "id": "p3-t10", "title": "Launch Landing Page", "status": "todo", "priority": "high", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-04-06T00:00:00Z", "endDate": "2026-04-12T00:00:00Z", "createdAt": "2026-03-31T00:00:00Z", "subTasks": [] }
+    { "id": "p3-t2", "title": "Pinecone Init", "description": "Vector database for semantic search.", "status": "in-progress", "priority": "high", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-26T00:00:00Z", "endDate": "2026-03-30T00:00:00Z", "createdAt": "2026-03-25T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t3", "title": "Voice Engine", "description": "Whisper API integration for speech-to-text.", "status": "done", "priority": "high", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-03-22T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-21T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t4", "title": "UI Components", "description": "Chat bubble and input area.", "status": "todo", "priority": "medium", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-04-02T00:00:00Z", "endDate": "2026-04-08T00:00:00Z", "createdAt": "2026-03-30T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t5", "title": "PDF Parser", "description": "Extracting text for AI context.", "status": "review", "priority": "medium", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-03-28T00:00:00Z", "endDate": "2026-04-01T00:00:00Z", "createdAt": "2026-03-27T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t6", "title": "Emotion Analysis", "description": "Sentiment score calculation per prompt.", "status": "in-progress", "priority": "low", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-03-29T00:00:00Z", "endDate": "2026-04-03T00:00:00Z", "createdAt": "2026-03-28T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t7", "title": "Usage Analytics", "description": "Charts for token consumption.", "status": "todo", "priority": "low", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-04-05T00:00:00Z", "endDate": "2026-04-07T00:00:00Z", "createdAt": "2026-04-01T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t8", "title": "Real-time Sync", "description": "Pusher integration for live chat.", "status": "todo", "priority": "high", "projectId": "p3", "assigneeId": "Youssef Hataba", "startDate": "2026-04-06T00:00:00Z", "endDate": "2026-04-10T00:00:00Z", "createdAt": "2026-04-02T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t9", "title": "Feedback Loop", "description": "Thumb up/down rating for AI answers.", "status": "review", "priority": "medium", "projectId": "p3", "assigneeId": "Mostafa UI", "startDate": "2026-03-30T00:00:00Z", "endDate": "2026-04-02T00:00:00Z", "createdAt": "2026-03-29T00:00:00Z", "subTasks": [], "history": [] },
+    { "id": "p3-t10", "title": "Deploy Edge", "description": "Vercel Edge Functions optimization.", "status": "todo", "priority": "urgent", "projectId": "p3", "assigneeId": "Elena Wick", "startDate": "2026-04-15T00:00:00Z", "endDate": "2026-04-18T00:00:00Z", "createdAt": "2026-04-05T00:00:00Z", "subTasks": [], "history": [] }
   ]
 }
