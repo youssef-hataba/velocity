@@ -1,0 +1,123 @@
+{
+  "projects": [
+    { "id": "p1", "name": "Volicity Core", "color": "bg-blue-600" },
+    { "id": "p2", "name": "MooDist Studio", "color": "bg-purple-600" },
+    { "id": "p3", "name": "FlowCast AI", "color": "bg-emerald-600" }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "title": "Build Volicity Architecture",
+      "description": "Setup Zustand and TypeScript types for global state management.",
+      "status": "in-progress",
+      "priority": "urgent",
+      "subTasks": [
+        { "id": "st1", "title": "Define Types", "isCompleted": true },
+        { "id": "st2", "title": "Create Store", "isCompleted": false }
+      ],
+      "projectId": "p1",
+      "createdAt": "2026-03-30T00:00:00Z"
+    },
+    {
+      "id": "t9",
+      "title": "SEO Metadata Strategy",
+      "description": "Implement dynamic JSON-LD and OpenGraph tags for Speakefy platform.",
+      "status": "review",
+      "priority": "high",
+      "subTasks": [
+        { "id": "st15", "title": "Setup Next.js Metadata API", "isCompleted": true },
+        { "id": "st16", "title": "Generate Sitemap", "isCompleted": false }
+      ],
+      "projectId": "p1",
+      "createdAt": "2026-03-30T14:20:00Z"
+    },
+    {
+      "id": "t10",
+      "title": "Framer Motion Page Transitions",
+      "description": "Add smooth cinematic transitions between dashboard routes.",
+      "status": "in-progress",
+      "priority": "medium",
+      "subTasks": [
+        { "id": "st17", "title": "AnimatePresence setup", "isCompleted": true }
+      ],
+      "projectId": "p1",
+      "createdAt": "2026-03-30T10:00:00Z"
+    },
+    {
+      "id": "t11",
+      "title": "Hoodie Previewer Logic",
+      "description": "Sync the custom product spinner with color selection state.",
+      "status": "review",
+      "priority": "urgent",
+      "subTasks": [
+        { "id": "st18", "title": "Color mapping function", "isCompleted": true },
+        { "id": "st19", "title": "Texture overlays", "isCompleted": false }
+      ],
+      "projectId": "p2",
+      "createdAt": "2026-03-29T16:45:00Z"
+    },
+    {
+      "id": "t12",
+      "title": "N8N Order Automation",
+      "description": "Link Google Sheets with the restaurant stock management workflow.",
+      "status": "done",
+      "priority": "high",
+      "subTasks": [
+        { "id": "st20", "title": "Webhook listener", "isCompleted": true },
+        { "id": "st21", "title": "Unique ID Generator", "isCompleted": true }
+      ],
+      "projectId": "p3",
+      "createdAt": "2026-03-28T09:00:00Z"
+    },
+    {
+      "id": "t13",
+      "title": "PDF Certificate Viewer",
+      "description": "Integrate a lightweight PDF viewer for Speakefy language certificates.",
+      "status": "todo",
+      "priority": "medium",
+      "subTasks": [
+        { "id": "st22", "title": "Blob URL generation", "isCompleted": false }
+      ],
+      "projectId": "p1",
+      "createdAt": "2026-03-30T11:30:00Z"
+    },
+    {
+      "id": "t14",
+      "title": "Luxury Editorial Shop Page",
+      "description": "Design a high-end typography-focused product listing for MooDist.",
+      "status": "todo",
+      "priority": "low",
+      "subTasks": [
+        { "id": "st23", "title": "Grid layout", "isCompleted": false },
+        { "id": "st24", "title": "Image hover effects", "isCompleted": false }
+      ],
+      "projectId": "p2",
+      "createdAt": "2026-03-30T13:00:00Z"
+    },
+    {
+      "id": "t15",
+      "title": "FlowCast AI Brand Assets",
+      "description": "Generate high-resolution cinematic logos for the new startup launch.",
+      "status": "review",
+      "priority": "medium",
+      "subTasks": [
+        { "id": "st25", "title": "Icon variations", "isCompleted": true }
+      ],
+      "projectId": "p3",
+      "createdAt": "2026-03-30T12:00:00Z"
+    },
+    {
+      "id": "t16",
+      "title": "Responsive Table System",
+      "description": "Create a reusable shadcn-inspired table for student management.",
+      "status": "todo",
+      "priority": "medium",
+      "subTasks": [
+        { "id": "st26", "title": "Pagination logic", "isCompleted": false },
+        { "id": "st27", "title": "Filter bar", "isCompleted": false }
+      ],
+      "projectId": "p1",
+      "createdAt": "2026-03-30T15:00:00Z"
+    }
+  ]
+}

@@ -1,0 +1,153 @@
+@import "tailwindcss";
+
+@theme {
+  /* Core Colors */
+  --color-background: light-dark(#ffffff, #0f172a);
+  --color-foreground: light-dark(#0f172a, #f8fafc);
+
+  /* Grayscale / Cinematic Greys */
+  --color-surface: #121826;     /* رصاصي عميق للخلفيات */
+  --color-steel: #272f3f;       /* رصاصي معدني للحدود والعناصر */
+  --color-faint: #64748b;
+
+  --color-card: light-dark(#ffffff, #1e293b);
+  --color-card-foreground: light-dark(#1e293b, #f1f5f9);
+
+  --color-primary: #3b82f6;
+  --color-primary-hover: #2563eb;
+  --color-primary-foreground: #ffffff;
+
+  --color-secondary: light-dark(#f1f5f9, #334155);
+  --color-secondary-foreground: light-dark(#475569, #f8fafc);
+
+  /* Semantic Priorities */
+  --color-urgent: #ef4444;
+  --color-high: #f59e0b;
+  --color-medium: #0ea5e9;
+  --color-low: #a855f7;
+
+  /* UI Feedback & States */
+  --color-success: #22c55e;
+  --color-warning: #facc15;
+  --color-info: #3b82f6;
+
+  /* Layout Elements */
+  --color-border: light-dark(#e2e8f0, #1e293b);
+  --color-input: light-dark(#f8fafc, #0f172a);
+  --color-ring: #3b82f6;
+
+  /* Typography States */
+  --color-muted: light-dark(#64748b, #94a3b8);
+
+  /* Popover & Tooltip Colors */
+  --color-popover: light-dark(#ffffff, #1a1f2e); /* Slightly lighter than background */
+  --color-popover-foreground: light-dark(#0f172a, #f8fafc);
+
+  /* Custom Shadows & Radius */
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --shadow-cinematic: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+@layer base {
+  *,
+  ::after,
+  ::before {
+    @apply border-border;
+  }
+
+  body {
+    color-scheme: light dark;
+    @apply bg-background text-foreground transition-colors duration-300 antialiased;
+  }
+}
+
+@layer utilities {
+  .glass {
+    @apply bg-card/60 backdrop-blur-lg border border-white/5;
+  }
+}
+
+@layer utilities {
+  /* تخصيص الـ Scrollbar للأجهزة التي تدعم الـ Webkit (Chrome, Safari, Edge) */
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 5px; /* عرض نحيف جداً وسينمائي */
+    height: 5px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent; /* التراك شفاف تماماً عشان ما يخربش الـ Glassmorphism */
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.05); /* لون خفيف جداً في البداية */
+    border-radius: 20px;
+    transition: all 0.3s ease;
+  }
+
+  /* يظهر بوضوح أكتر لما المستخدم يقرب الماوس من منطقة السكرول */
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(59, 130, 246, 0.2); /* أزرق خفيف يتماشى مع الهوية */
+    box-shadow: 0 0 10px rgba(59, 130, 246, 0.1);
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(59, 130, 246, 0.5) !important; /* يلمع أكتر عند اللمس */
+  }
+
+  /* لمتصفح Firefox */
+  .custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    background: transparent; /* مخفي تماماً */
+  }
+
+  .custom-scrollbar:hover::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.1); /* يظهر بهدوء عند الـ Hover */
+  }
+}
+
+@layer utilities {
+  /* 1. Hide scrollbar but allow scrolling (used for the project rail) */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  /* 2. Professional Cinematic Shadow (Deep floating effect) */
+  .shadow-cinematic {
+    box-shadow: 
+      0 20px 50px -12px rgba(0, 0, 0, 0.5),
+      0 0 20px rgba(59, 130, 246, 0.05);
+  }
+
+  /* 3. Smooth Glassmorphism with variable intensity */
+  .glass-premium {
+    @apply bg-card/20 backdrop-blur-2xl border border-white/[0.03] shadow-2xl;
+  }
+
+  /* 4. Text and Background subtle glows */
+  .text-glow {
+    text-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  }
+  
+  .bg-glow-primary {
+    background: radial-gradient(circle at center, rgba(59, 130, 246, 0.15) 0%, transparent 70%);
+  }
+
+  /* 5. Custom Tooltip Indicator (The little arrow) */
+  .tooltip-arrow {
+    @apply absolute top-1/2 -left-1 -translate-y-1/2 w-2 h-2 bg-popover border-l border-b border-border rotate-45;
+  }
+}
+
+.workspace-initials {
+  @apply tracking-tighter leading-none flex items-center justify-center;
+  font-feature-settings: "tnum", "lnum"; /* Ensures numbers and letters align perfectly */
+}
