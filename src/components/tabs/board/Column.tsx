@@ -1,4 +1,5 @@
-import { Droppable } from "@hello-pangea/dnd";
+import { useDroppable } from "@dnd-kit/core";
+import { SortableContext, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { Plus, MoreHorizontal } from "lucide-react";
 import type { Status, Task } from "@/types/board";
 import TaskCard from "./TaskCard";
@@ -10,6 +11,10 @@ interface ColumnProps {
 }
 
 const Column = ({ title, status, tasks }: ColumnProps) => {
+  const { setNodeRef, isOver } = useDroppable({
+    id: status,
+  });
+
   const statusConfig: Record<Status, { dot: string; glow: string }> = {
     "todo": { dot: "bg-slate-400", glow: "shadow-none" },
     "in-progress": { dot: "bg-blue-500", glow: "shadow-[0_0_12px_rgba(59,130,246,0.5)]" },
@@ -21,7 +26,7 @@ const Column = ({ title, status, tasks }: ColumnProps) => {
 
   return (
     <div className="flex flex-col w-90 min-w-70 h-full group/column relative rounded-[2.5rem] bg-surface/20 border border-steel/10 py-3 px-1 pb-0 backdrop-blur-sm transition-all duration-500">
-      <header className="relative p-5 mx-2 rounded-[1.8rem] border border-black/5 dark:border-white/5 bg-white/40 dark:bg-card/20 backdrop-blur-2xl flex items-center justify-between shadow-sm transition-all duration-500">
+      <header className="relative p-5 mx-2 rounded-[1.8rem] border border-black/5 dark:border-white/5 bg-white/40 dark:bg-card/20 backdrop-blur-2xl flex items-center justify-between shadow-sm transition-all duration-500 z-10">
         <div className="flex items-center gap-3">
           <div className={`w-2.5 h-2.5 rounded-full ${config.dot} ${config.glow}`} />
           <h2 className="font-black text-[10px] uppercase tracking-[0.3em] text-foreground/70">{title}</h2>
@@ -32,31 +37,27 @@ const Column = ({ title, status, tasks }: ColumnProps) => {
         </button>
       </header>
 
-      <Droppable droppableId={status}>
-        {(provided, snapshot) => (
-          <div
-            {...provided.droppableProps}
-            ref={provided.innerRef}
-            className={`flex-1 overflow-y-auto space-y-5 px-2 py-6 mt-2 custom-scrollbar transition-colors duration-300 rounded-[2rem] ${
-              snapshot.isDraggingOver ? "bg-primary/5" : ""
-            }`}
-          >
-            {tasks.length > 0 ? (
-              tasks.map((task, index) => (
-                <TaskCard key={task.id} task={task} index={index} />
-              ))
-            ) : (
-              <div className="h-44 border-2 border-dashed rounded-4xl flex flex-col items-center justify-center gap-3 border-primary/10 bg-primary/2">
-                <Plus size={20} className="text-steel" />
-                <p className="text-[9px] uppercase tracking-[0.2em] font-black text-muted/20">Empty Sequence</p>
-              </div>
-            )}
-            {provided.placeholder}
-          </div>
-        )}
-      </Droppable>
+      <SortableContext items={tasks.map(t => t.id)} strategy={verticalListSortingStrategy}>
+        <div
+          ref={setNodeRef}
+          className={`flex-1 overflow-y-auto space-y-5 px-2 py-6 mt-2 custom-scrollbar transition-all duration-300 rounded-4xl ${
+            isOver ? "bg-primary/5 ring-2 ring-primary/10" : ""
+          }`}
+        >
+          {tasks.length > 0 ? (
+            tasks.map((task, index) => (
+              <TaskCard key={task.id} task={task} index={index} />
+            ))
+          ) : (
+            <div className="h-44 border-2 border-dashed rounded-3xl flex flex-col items-center justify-center gap-3 border-primary/10 bg-primary/5">
+              <Plus size={20} className="text-steel" />
+              <p className="text-[9px] uppercase tracking-[0.2em] font-black text-muted/20">Empty Sequence</p>
+            </div>
+          )}
+        </div>
+      </SortableContext>
 
-      <div className="absolute bottom-3 right-2">
+      <div className="absolute bottom-3 right-2 z-20">
         <button className="w-12 h-12 rounded-2xl bg-primary text-white shadow-lg flex items-center justify-center hover:scale-110 hover:rotate-90 transition-all duration-500">
           <Plus size={24} strokeWidth={3} />
         </button>

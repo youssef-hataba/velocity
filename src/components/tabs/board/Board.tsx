@@ -1,10 +1,25 @@
-import { useState, useMemo, type ChangeEvent } from "react";
-import { DragDropContext } from "@hello-pangea/dnd";
-import type { DropResult } from "@hello-pangea/dnd";
+import { useState, useMemo } from "react";
+import { 
+  DndContext, 
+  DragOverlay, 
+  closestCorners, 
+  KeyboardSensor, 
+  PointerSensor, 
+  useSensor, 
+  useSensors,
+  defaultDropAnimationSideEffects,
+  type DragStartEvent, 
+  type DragEndEvent,
+  type DropAnimation
+} from "@dnd-kit/core";
+import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { LayoutGrid } from "lucide-react";
+
 import Column from "./Column";
 import { BoardHeader } from "./BoardHeader";
 import { BoardControls } from "./BoardControls";
+import TaskCard from "./TaskCard"; 
+
 import type { Status, Priority, Task } from "@/types/board";
 import { useBoardStore } from "@/store/useBoardStore";
 
@@ -24,15 +39,26 @@ const Board = () => {
   const activeProjectId = useBoardStore((state) => state.activeProjectId);
   const projects = useBoardStore((state) => state.projects) || [];
 
+  const [activeTask, setActiveTask] = useState<Task | null>(null);
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activePriority, setActivePriority] = useState<PriorityFilter>("all");
   const [sortBy, setSortBy] = useState<SortOption>("newest");
 
+  const sensors = useSensors(
+    useSensor(PointerSensor, {
+      activationConstraint: {
+        distance: 3,
+      },
+    }),
+    useSensor(KeyboardSensor, {
+      coordinateGetter: sortableKeyboardCoordinates,
+    })
+  );
+
   const activeProject = projects.find((p) => p.id === activeProjectId);
 
   const filteredAndSortedTasks = useMemo(() => {
-    const baseTasks = tasksFromStore || [];
-    const tasks = [...baseTasks];
+    const tasks = (tasksFromStore || []).slice();
 
     const filtered = tasks.filter((task: Task) => {
       const isInProject = task.projectId === activeProjectId;
@@ -45,9 +71,6 @@ const Board = () => {
     });
 
     return filtered.sort((a, b) => {
-      if (sortBy === "newest") {
-        return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
-      }
       if (sortBy === "priority") {
         const weight: Record<Priority, number> = { urgent: 4, high: 3, medium: 2, low: 1 };
         return weight[b.priority] - weight[a.priority];
@@ -55,30 +78,46 @@ const Board = () => {
       if (sortBy === "alphabetical") {
         return a.title.localeCompare(b.title);
       }
-      return 0;
+      return new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime();
     });
   }, [tasksFromStore, activeProjectId, searchQuery, activePriority, sortBy]);
 
-  const onDragStart = () => {
-    document.body.style.overflow = "hidden";
+  const handleDragStart = (event: DragStartEvent) => {
+    const { active } = event;
+    const task = filteredAndSortedTasks.find((t) => t.id === active.id);
+    if (task) {
+      setActiveTask(task);
+      document.body.style.overflow = "hidden";
+    }
   };
 
-  const onDragEnd = (result: DropResult) => {
+  const handleDragEnd = (event: DragEndEvent) => {
+    const { active, over } = event;
+    setActiveTask(null);
     document.body.style.overflow = "";
 
-    const { destination, draggableId } = result;
-    if (!destination) return;
-    if (
-      destination.droppableId === result.source.droppableId &&
-      destination.index === result.source.index
-    )
-      return;
+    if (!over) return;
 
-    moveTask(draggableId, destination.droppableId as Status);
+    const taskId = active.id as string;
+    const overId = over.id as string;
+
+    const newStatus = COLUMNS.some(c => c.status === overId) 
+      ? (overId as Status) 
+      : (filteredAndSortedTasks.find(t => t.id === overId)?.status as Status);
+
+    if (newStatus) {
+      moveTask(taskId, newStatus);
+    }
   };
 
-  const handleSearchChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setSearchQuery(e.target.value);
+  const dropAnimation: DropAnimation = {
+    sideEffects: defaultDropAnimationSideEffects({
+      styles: {
+        active: {
+          opacity: "0.5",
+        },
+      },
+    }),
   };
 
   if (!activeProject) {
@@ -95,13 +134,18 @@ const Board = () => {
   }
 
   return (
-    <DragDropContext onDragStart={onDragStart} onDragEnd={onDragEnd}>
+    <DndContext
+      sensors={sensors}
+      collisionDetection={closestCorners}
+      onDragStart={handleDragStart}
+      onDragEnd={handleDragEnd}
+    >
       <div className="h-full flex flex-col gap-8">
         <BoardHeader project={activeProject} tasksCount={filteredAndSortedTasks.length} />
 
         <BoardControls
           searchQuery={searchQuery}
-          onSearchChange={handleSearchChange}
+          onSearchChange={(e) => setSearchQuery(e.target.value)}
           activePriority={activePriority}
           onPriorityChange={setActivePriority}
           sortBy={sortBy}
@@ -119,7 +163,15 @@ const Board = () => {
           ))}
         </div>
       </div>
-    </DragDropContext>
+
+      <DragOverlay dropAnimation={dropAnimation}>
+        {activeTask ? (
+          <div className="cursor-grabbing scale-105 rotate-2 transition-transform duration-200 shadow-2xl">
+            <TaskCard task={activeTask} index={0} isOverlay />
+          </div>
+        ) : null}
+      </DragOverlay>
+    </DndContext>
   );
 };
 

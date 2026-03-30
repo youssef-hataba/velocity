@@ -12,8 +12,8 @@ export const TaskDetailsModal = ({ task, open, onOpenChange }: Props) => {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-md z-[100] animate-in fade-in duration-300" />
-        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] max-w-2xl bg-[#0a0a0c] border border-white/10 rounded-[3rem] p-10 shadow-2xl z-[101] outline-none animate-in zoom-in-95 duration-300">
+        <Dialog.Overlay className="fixed inset-0 bg-black/40 backdrop-blur-md z-100 animate-in fade-in duration-300" />
+        <Dialog.Content className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[95vw] max-w-2xl bg-[#0a0a0c] border border-white/10 rounded-[3rem] p-10 shadow-2xl z-101 outline-none animate-in zoom-in-95 duration-300">
           
           <div className="flex justify-between items-start mb-8">
             <div className="space-y-1">
@@ -56,7 +56,7 @@ export const TaskDetailsModal = ({ task, open, onOpenChange }: Props) => {
               <div className="space-y-6 ml-2 border-l border-white/10 pl-6">
                 {task.history?.map((entry, index) => (
                   <div key={index} className="relative">
-                    <div className="absolute -left-[31px] top-1 w-2 h-2 rounded-full bg-primary" />
+                    <div className="absolute -left-8 top-1 w-2 h-2 rounded-full bg-primary" />
                     <div className="flex items-center gap-2 text-xs font-bold text-white/80">
                       <User size={12} className="text-white/40" />
                       {entry.user} <span className="font-normal text-white/50 text-[11px]">{entry.action}</span>
