@@ -18,7 +18,7 @@ interface Props {
 export const TimelineControls = ({ 
   filterStatus, setFilterStatus, dateRange, setDateRange, sortBy, setBy 
 }: Props) => (
-  <div className="flex flex-col xl:flex-row gap-6 items-center justify-between bg-white/[0.02] border border-white/5 p-4 rounded-[2.5rem] backdrop-blur-2xl shadow-2xl">
+  <div className="flex flex-col xl:flex-row gap-6 items-center justify-between bg-white/2 border border-white/5 p-4 rounded-[2.5rem] backdrop-blur-2xl shadow-2xl">
     
     <div className="flex items-center gap-1.5 bg-black/20 p-1.5 rounded-2xl border border-white/5 shadow-inner">
       {["all", "todo", "in-progress", "review", "done"].map((status) => (
@@ -47,7 +47,7 @@ export const TimelineControls = ({
               ...prev, 
               start: startOfDay(new Date(e.target.value)) 
             }))}
-            className="bg-transparent text-[10px] font-black uppercase outline-none text-white/80 focus:text-primary transition-colors cursor-pointer [color-scheme:dark]"
+            className="bg-transparent text-[10px] font-black uppercase outline-none text-white/80 focus:text-primary transition-colors cursor-pointer scheme-dark"
           />
         </div>
 
@@ -61,10 +61,10 @@ export const TimelineControls = ({
               ...prev, 
               end: startOfDay(new Date(e.target.value)) 
             }))}
-            className="bg-transparent text-[10px] font-black uppercase outline-none text-white/80 focus:text-primary transition-colors cursor-pointer [color-scheme:dark]"
+            className="bg-transparent text-[10px] font-black uppercase outline-none text-white/80 focus:text-primary transition-colors cursor-pointer scheme-dark"
           />
         </div>
-      </div>
+        </div>
 
       <div className="flex items-center gap-3 bg-white/5 px-2 py-1.5 rounded-2xl border border-white/5">
         {[
