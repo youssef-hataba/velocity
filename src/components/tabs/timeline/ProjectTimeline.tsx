@@ -1,6 +1,5 @@
 import { useState, useMemo, useRef } from "react";
-import { useBoardStore } from "../../store/useBoardStore";
-import { type Project, type Task, type Priority, PRIORITY_CONFIGS } from "../../types/board";
+import { type Project, type Task, type Priority, PRIORITY_CONFIGS } from  "@/types/board";
 import { motion, AnimatePresence } from "framer-motion";
 import {
   format,
@@ -15,6 +14,7 @@ import {
 
 import { TimelineControls } from "./TimelineControls";
 import { ProjectAnalytics } from "./ProjectAnalytics";
+import { useBoardStore } from "@/store/useBoardStore";
 
 export const ProjectTimeline = ({ project }: { project: Project }) => {
   const tasksFromStore = useBoardStore((state) => state.tasks);

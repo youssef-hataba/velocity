@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { User2, CheckCircle2, Clock } from "lucide-react";
 import { MemberActivityHeatmap } from "./MemberActivityHeatmap";
-import { type Task } from "../../types/board";
+import type { Task } from "@/types/board";
 
 interface MemberProps {
   id: string;

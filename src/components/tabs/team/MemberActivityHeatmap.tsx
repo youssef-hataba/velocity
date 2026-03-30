@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { type Task } from "../../types/board";
+import type { Task } from "@/types/board";
 
 interface Props {
   memberId: string;

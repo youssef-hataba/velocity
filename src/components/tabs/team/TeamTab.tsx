@@ -1,8 +1,8 @@
 import { useMemo } from "react";
-import { type Project, type Task } from "../../types/board";
 import { MemberCard } from "./MemberCard";
 import { TeamMetrics } from "./TeamMetrics";
 import { LayoutGrid } from "lucide-react";
+import type { Project, Task } from "@/types/board";
 
 interface Props {
   project: Project;

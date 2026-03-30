@@ -1,5 +1,5 @@
 import { Plus, MoreHorizontal } from "lucide-react";
-import type { Status, Task } from "../../types/board";
+import type { Status, Task } from "@/types/board";
 import TaskCard from "./TaskCard";
 
 interface ColumnProps {

@@ -1,13 +1,14 @@
 import { motion } from "framer-motion";
 import { Calendar, CheckSquare, Zap } from "lucide-react";
-import type { Priority, Task } from "../../types/board";
+import type { Priority, Task } from "@/types/board";
 
 interface TaskCardProps {
   task: Task;
   onClick: (task: Task) => void;
 }
 
-const getPriorityConfig = (priority: Priority) => {
+const getPriorityConfig = (priority: Priority
+) => {
   const configs: Record<Priority, { bg: string; text: string; border: string; glow: string }> = {
     urgent: { 
       bg: "bg-urgent/14", 

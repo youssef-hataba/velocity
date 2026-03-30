@@ -1,8 +1,8 @@
-import { useBoardStore } from "../../store/useBoardStore";
-import { type Status } from "../../types/board";
 import Column from "./Column";
 import { LayoutGrid } from "lucide-react";
 import { BoardHeader } from "./BoardHeader";
+import type { Status } from "@/types/board";
+import { useBoardStore } from "@/store/useBoardStore";
 
 const COLUMNS: { title: string; status: Status }[] = [
   { title: "To Do", status: "todo" },

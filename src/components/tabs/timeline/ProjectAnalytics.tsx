@@ -1,7 +1,7 @@
 import {useMemo} from "react";
 import {motion} from "framer-motion";
 import {CheckCircle2, Clock, Users, Flame, Target, TrendingUp} from "lucide-react";
-import {type Task, type Priority, PRIORITY_CONFIGS} from "../../types/board";
+import {type Task, type Priority, PRIORITY_CONFIGS} from  "@/types/board";
 
 interface Props {
   tasks: Task[];
