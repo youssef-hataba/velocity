@@ -13,7 +13,7 @@ interface BoardState {
   updateProject: (id: string, updates: Partial<Project>) => void;
   deleteProject: (id: string) => void;
   setActiveTab: (tabId: string) => void;
-  addTask: (task: Omit<Task, 'id' | 'createdAt'>) => void;
+  addTask: (task: Omit<Task, 'id' | 'createdAt'>) => string;
   moveTask: (taskId: string, newStatus: Status) => void;
   updateTask: (taskId: string, updates: Partial<Task>) => void;
   deleteTask: (taskId: string) => void;
@@ -28,7 +28,6 @@ export const useBoardStore = create<BoardState>()(
       activeTab: 'board',
 
       setActiveTab: (tabId) => set({ activeTab: tabId }),
-
       setActiveProject: (id) => set({ activeProjectId: id }),
 
       addProject: (project) => set((state) => ({
@@ -47,10 +46,11 @@ export const useBoardStore = create<BoardState>()(
           : state.activeProjectId
       })),
 
-      addTask: (task) => set((state) => {
+      addTask: (task) => {
+        const newId = crypto.randomUUID();
         const newTask: Task = {
           ...task,
-          id: crypto.randomUUID(),
+          id: newId,
           createdAt: new Date().toISOString(),
           subTasks: task.subTasks || [],
           history: [
@@ -62,8 +62,9 @@ export const useBoardStore = create<BoardState>()(
           ]
         } as Task;
 
-        return { tasks: [...state.tasks, newTask] };
-      }),
+        set((state) => ({ tasks: [...state.tasks, newTask] }));
+        return newId;
+      },
 
       moveTask: (taskId, newStatus) => set((state) => ({
         tasks: state.tasks.map((t) => {
