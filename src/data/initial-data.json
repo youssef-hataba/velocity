@@ -1,8 +1,8 @@
 {
   "projects": [
-    { "id": "p1", "name": "Volicity", "color": "bg-blue-600", "members": ["Youssef Hataba", "Ahmed Ali", "Sarah John"] },
-    { "id": "p2", "name": "MooDist Studio", "color": "bg-purple-600", "members": ["Youssef Hataba", "Omar Khaled"] },
-    { "id": "p3", "name": "FlowCast AI", "color": "bg-emerald-600", "members": ["Youssef Hataba", "Mostafa UI", "Elena Wick"] }
+    { "id": "p1", "name": "Volicity", "color": "#2563eb", "members": ["Youssef Hataba", "Ahmed Ali", "Sarah John"] },
+    { "id": "p2", "name": "MooDist Studio", "color": "#9333ea", "members": ["Youssef Hataba", "Omar Khaled"] },
+    { "id": "p3", "name": "FlowCast AI", "color": "#059669", "members": ["Youssef Hataba", "Mostafa UI", "Elena Wick"] }
   ],
   "tasks": [
     { "id": "p1-t1", "title": "Architecture Setup", "status": "done", "priority": "urgent", "projectId": "p1", "assigneeId": "Youssef Hataba", "startDate": "2026-03-20T00:00:00Z", "endDate": "2026-03-24T00:00:00Z", "createdAt": "2026-03-19T00:00:00Z", 
