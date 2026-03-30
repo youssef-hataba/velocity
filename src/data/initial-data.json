@@ -1,8 +1,23 @@
 {
   "projects": [
-    { "id": "p1", "name": "Volicity Core", "color": "bg-blue-600" },
-    { "id": "p2", "name": "MooDist Studio", "color": "bg-purple-600" },
-    { "id": "p3", "name": "FlowCast AI", "color": "bg-emerald-600" }
+    { 
+      "id": "p1", 
+      "name": "Volicity Core", 
+      "color": "bg-blue-600",
+      "members": ["Youssef Hataba", "Ahmed Ali", "Sarah John"]
+    },
+    { 
+      "id": "p2", 
+      "name": "MooDist Studio", 
+      "color": "bg-purple-600",
+      "members": ["Youssef Hataba", "Omar Khaled"]
+    },
+    { 
+      "id": "p3", 
+      "name": "FlowCast AI", 
+      "color": "bg-emerald-600",
+      "members": ["Youssef Hataba", "Mostafa UI", "Elena Wick"]
+    }
   ],
   "tasks": [
     {

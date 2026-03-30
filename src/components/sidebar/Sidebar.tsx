@@ -11,8 +11,7 @@ const Sidebar = () => {
     return saved ? saved === "true" : true;
   });
 
-  const [activeNav, setActiveNav] = useState("board");
-  const { projects, activeProjectId, setActiveProject } = useBoardStore();
+  const { projects, activeProjectId, setActiveProject, activeTab, setActiveTab } = useBoardStore();
 
   useEffect(() => {
     localStorage.setItem("sidebar_collapsed", isCollapsed.toString());
@@ -30,8 +29,8 @@ const Sidebar = () => {
 
       <SidebarExpanded 
         isCollapsed={isCollapsed} 
-        activeNav={activeNav} 
-        onNavClick={setActiveNav} 
+        activeNav={activeTab} 
+        onNavClick={setActiveTab}
         onCollapse={toggleCollapse} 
       />
 
