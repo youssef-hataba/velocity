@@ -1,15 +1,16 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource-variable/geist";
 
-/* 1. إعداد الـ Dark Mode يدوياً لضمان التوافق التام */
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
-  /* --- Light Mode Core (Ice Blue Aesthetic) --- */
-  --color-background: #e0e7ff; /* لبني باهت مريح للعين */
+  --color-background: #e0e7ff; 
   --color-foreground: #1e293b;
 
-  --color-surface: #f8fafc;     /* أفتح قليلاً من الخلفية للـ Sections */
-  --color-steel: #cbd5e1;       /* رمادي مزرق للحدود */
+  --color-surface: #f8fafc;     
+  --color-steel: #cbd5e1;
   --color-faint: #64748b;
 
   --color-card: #ffffff;
@@ -66,7 +67,7 @@
     --color-muted: #94a3b8;
     --color-popover: #1a1f2e;
     --color-popover-foreground: #f8fafc;
-    
+
     /* Dark Shadow Tuning */
     --shadow-cinematic: 0 20px 50px -12px rgba(0, 0, 0, 0.5), 0 0 20px rgba(59, 130, 246, 0.05);
   }
@@ -76,8 +77,14 @@
   }
 
   body {
-    @apply bg-background text-foreground antialiased selection:bg-primary/20;
+    @apply antialiased selection:bg-primary/20 bg-background text-foreground;
     font-feature-settings: "cv02", "cv03", "cv04", "tnum";
+  }
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
   }
 }
 
