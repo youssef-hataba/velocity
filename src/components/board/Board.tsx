@@ -2,6 +2,7 @@ import { useBoardStore } from "../../store/useBoardStore";
 import type { Status, Task } from "../../types/board";
 import Column from "./Column";
 import { LayoutGrid } from "lucide-react";
+import { ProjectSettings } from "./ProjectSettings";
 
 const Board = () => {
   const tasks = useBoardStore((state) => state.tasks);
@@ -38,22 +39,43 @@ const Board = () => {
   return (
     <div className="h-full flex flex-col gap-10">
       <header className="flex flex-col gap-2 shrink-0 px-2">
-        <div className="flex items-center gap-4">
-          <div
-            className={`w-5 h-5 rounded-full ${activeProject.color} shadow-[0_0_15px_rgba(var(--color-primary),0.4)] border-2 border-white/20 dark:border-white/10`}
-          />
-          <h2 className="text-4xl font-black tracking-tighter text-foreground drop-shadow-sm">
-            {activeProject.name}
-          </h2>
-          <span className="ml-2 px-3 py-1 rounded-full bg-steel/10 dark:bg-steel/40 text-muted/60 text-[10px] font-bold border border-steel/10">
-            {projectTasks.length} Total Tasks
-          </span>
+        <div className="flex items-center justify-between w-full">
+          <div className="flex items-center gap-4">
+            <div
+              className="w-5 h-5 rounded-full border-2 border-white/20 shadow-lg"
+              style={{ backgroundColor: activeProject.color, boxShadow: `0 0 15px ${activeProject.color}66` }}
+            />
+            <h2 className="text-4xl font-black tracking-tighter text-foreground drop-shadow-sm">
+              {activeProject.name}
+            </h2>
+            <span className="ml-2 px-3 py-1 rounded-full bg-steel/10 text-muted/60 text-[10px] font-bold border border-steel/10">
+              {projectTasks.length} Tasks
+            </span>
+          </div>
+
+          <div className="flex items-center gap-6">
+            {/* Team Preview */}
+            <div className="flex -space-x-3">
+              {activeProject.members?.slice(0, 3).map((email, i) => (
+                <div key={i} title={email} className="w-9 h-9 rounded-full border-2 border-background bg-secondary flex items-center justify-center text-[10px] font-black uppercase ring-1 ring-steel/10">
+                  {email.substring(0, 1)}
+                </div>
+              ))}
+              {(activeProject.members?.length || 0) > 3 && (
+                <div className="w-9 h-9 rounded-full border-2 border-background bg-steel/10 flex items-center justify-center text-[10px] font-bold text-muted-foreground">
+                  +{(activeProject.members?.length || 0) - 3}
+                </div>
+              )}
+            </div>
+            
+            <ProjectSettings project={activeProject} />
+          </div>
         </div>
 
         <div className="flex items-center gap-3">
           <div className="h-px w-8 bg-primary/40" />
-          <p className="text-muted/40 dark:text-muted-foreground/30 text-[11px] font-black uppercase tracking-widest">
-            Workflow Management Center
+          <p className="text-muted/40 text-[11px] font-black uppercase tracking-widest truncate max-w-xl">
+            {activeProject.description || "Workflow Management Center"}
           </p>
         </div>
       </header>

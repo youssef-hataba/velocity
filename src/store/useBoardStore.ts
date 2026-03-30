@@ -4,14 +4,15 @@ import initialData from '../data/initial-data.json';
 import type { Project, Status, Task } from '../types/board';
 
 interface BoardState {
-  // Data
   projects: Project[];
   tasks: Task[];
   activeProjectId: string;
 
   // Workspace Actions
   setActiveProject: (id: string) => void;
-  addProject: (project: Omit<Project, 'id'>) => void;
+  addProject: (project: Project) => void;
+  updateProject: (id: string, updates: Partial<Project>) => void;
+  deleteProject: (id: string) => void;
 
   // Task Actions
   addTask: (task: Omit<Task, 'id' | 'createdAt'>) => void;
@@ -23,48 +24,42 @@ interface BoardState {
 export const useBoardStore = create<BoardState>()(
   persist(
     (set) => ({
-      // Initialize with data from JSON
       projects: initialData.projects as Project[],
       tasks: initialData.tasks as Task[],
       activeProjectId: initialData.projects[0]?.id || '',
 
-      // Workspace Logic
       setActiveProject: (id) => set({ activeProjectId: id }),
 
       addProject: (project) => set((state) => ({
-        projects: [...state.projects, { ...project, id: crypto.randomUUID() }]
+        projects: [...state.projects, project]
       })),
 
-      // Task Logic
+      updateProject: (id, updates) => set((state) => ({
+        projects: state.projects.map((p) => p.id === id ? { ...p, ...updates } : p)
+      })),
+
+      deleteProject: (id) => set((state) => ({
+        projects: state.projects.filter((p) => p.id !== id),
+        tasks: state.tasks.filter((t) => t.projectId !== id),
+        activeProjectId: state.activeProjectId === id ? (state.projects.find(p => p.id !== id)?.id || '') : state.activeProjectId
+      })),
+
       addTask: (task) => set((state) => ({
-        tasks: [
-          ...state.tasks, 
-          { 
-            ...task, 
-            id: crypto.randomUUID(), 
-            createdAt: new Date().toISOString() 
-          } as Task
-        ]
+        tasks: [...state.tasks, { ...task, id: crypto.randomUUID(), createdAt: new Date().toISOString() } as Task]
       })),
 
       moveTask: (taskId, newStatus) => set((state) => ({
-        tasks: state.tasks.map((t) => 
-          t.id === taskId ? { ...t, status: newStatus } : t
-        )
+        tasks: state.tasks.map((t) => t.id === taskId ? { ...t, status: newStatus } : t)
       })),
 
       updateTask: (taskId, updates) => set((state) => ({
-        tasks: state.tasks.map((t) => 
-          t.id === taskId ? { ...t, ...updates } : t
-        )
+        tasks: state.tasks.map((t) => t.id === taskId ? { ...t, ...updates } : t)
       })),
 
       deleteTask: (taskId) => set((state) => ({
         tasks: state.tasks.filter((t) => t.id !== taskId)
       })),
     }),
-    {
-      name: 'volicity-storage', // Key for LocalStorage
-    }
+    { name: 'volicity-storage' }
   )
 );
