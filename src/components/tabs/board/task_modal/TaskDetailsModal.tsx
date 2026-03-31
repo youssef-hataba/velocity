@@ -29,7 +29,8 @@ export const TaskDetailsModal = ({ task, initialStatus, open, onOpenChange }: Pr
         <Dialog.Content
           key={modalKey}
           onOpenAutoFocus={(e) => e.preventDefault()}
-          className="fixed left-[50%] top-[50%] z-101 w-full max-w-275 translate-x-[-50%] translate-y-[-50%] outline-none"
+          // Changed w-full to w-[95%] on mobile and max-w-275 on desktop
+          className="fixed left-[50%] top-[50%] z-101 w-[95%] lg:w-full max-w-275 translate-x-[-50%] translate-y-[-50%] outline-none"
         >
           <ModalInnerContent 
             task={task} 
@@ -55,16 +56,18 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
   };
 
   return (
-    <div className="bg-[#0c0c0e] border border-white/10 rounded-[3rem] shadow-2xl overflow-hidden relative">
+    // Adjusted rounded corners and padding for mobile
+    <div className="bg-[#0c0c0e] border border-white/10 rounded-[2rem] lg:rounded-[3rem] shadow-2xl overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50" />
-      <div className="p-8 lg:p-12 max-h-[90vh] overflow-y-auto custom-scrollbar">
+      <div className="p-6 lg:p-12 max-h-[90vh] overflow-y-auto custom-scrollbar">
         <TaskHeader
           editedTitle={actions.editedTitle}
           setEditedTitle={actions.setEditedTitle}
           onBlur={() => actions.handleSyncData()}
           isNew={!isEditMode}
         />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16">
+        {/* Responsive Grid: 1 column on mobile, 12 on desktop */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           <TaskMainContent 
             {...actions} 
             task={task} 
