@@ -1,10 +1,11 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { useTaskActions } from "../hooks/useTaskActions";
-import { useBoardStore } from "@/store/useBoardStore";
-import { TaskHeader } from "./TaskHeader";
-import { TaskMainContent } from "./TaskMainContent";
-import { TaskSidebar } from "./taskSidebar/TaskSidebar";
-import type { Task, Status } from "@/types/board";
+import {useTaskActions} from "../hooks/useTaskActions";
+import {useBoardStore} from "@/store/useBoardStore";
+import {TaskHeader} from "./TaskHeader";
+import {TaskMainContent} from "./TaskMainContent";
+import {TaskSidebar} from "./taskSidebar/TaskSidebar";
+import type {Task, Status} from "@/types/board";
+import {useTaskAI} from "../hooks/useTaskAI";
 
 interface Props {
   task: Task | null;
@@ -19,8 +20,8 @@ interface ModalInnerContentProps {
   onOpenChange: (open: boolean) => void;
 }
 
-export const TaskDetailsModal = ({ task, initialStatus, open, onOpenChange }: Props) => {
-  const modalKey = open ? (task?.id || "new-task-key") : "closed-key";
+export const TaskDetailsModal = ({task, initialStatus, open, onOpenChange}: Props) => {
+  const modalKey = open ? task?.id || "new-task-key" : "closed-key";
 
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
@@ -29,12 +30,11 @@ export const TaskDetailsModal = ({ task, initialStatus, open, onOpenChange }: Pr
         <Dialog.Content
           key={modalKey}
           onOpenAutoFocus={(e) => e.preventDefault()}
-          className="fixed left-[50%] top-[50%] z-101 w-[95%] lg:w-full max-w-275 translate-x-[-50%] translate-y-[-50%] outline-none"
-        >
-          <ModalInnerContent 
-            task={task} 
-            initialStatus={initialStatus} 
-            onOpenChange={onOpenChange} 
+          className="fixed left-[50%] top-[50%] z-101 w-[95%] lg:w-full max-w-275 translate-x-[-50%] translate-y-[-50%] outline-none">
+          <ModalInnerContent
+            task={task}
+            initialStatus={initialStatus}
+            onOpenChange={onOpenChange}
           />
         </Dialog.Content>
       </Dialog.Portal>
@@ -42,10 +42,15 @@ export const TaskDetailsModal = ({ task, initialStatus, open, onOpenChange }: Pr
   );
 };
 
-const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerContentProps) => {
+const ModalInnerContent = ({task, initialStatus, onOpenChange}: ModalInnerContentProps) => {
   const actions = useTaskActions(task, initialStatus);
   const deleteTask = useBoardStore((state) => state.deleteTask);
   const isEditMode = !!task;
+
+  const AI_Actions = useTaskAI(actions.editedDesc);
+  const handleRunAiAnalysis = async () => {
+    await AI_Actions.getEstimation(actions.editedTitle, actions.localSubTasks);
+  };
 
   const TITLE_LIMIT = 50;
   const DESC_LIMIT = 500;
@@ -53,7 +58,7 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
   const isTitleOverLimit = actions.editedTitle.length > TITLE_LIMIT;
   const isDescOverLimit = actions.editedDesc.length > DESC_LIMIT;
   const isTitleEmpty = actions.editedTitle.trim() === "";
-  
+
   const isSubmitDisabled = isTitleOverLimit || isDescOverLimit || isTitleEmpty;
 
   const handleDelete = () => {
@@ -75,16 +80,28 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
           isTitleOverLimit={isTitleOverLimit}
         />
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
-          <TaskMainContent 
-            {...actions} 
-            task={task} 
-            isNew={!isEditMode} 
+          <TaskMainContent
+            {...actions}
+            aiEstimation={AI_Actions.estimation}
+            isEstimating={AI_Actions.isEstimating}
+            onRunAi={handleRunAiAnalysis}
+            task={task}
+            isNew={!isEditMode}
             onDeleteTask={handleDelete}
             onClose={() => onOpenChange(false)}
             isSubmitDisabled={isSubmitDisabled}
             isTitleOverLimit={isTitleOverLimit}
           />
-          <TaskSidebar {...actions} task={task} />
+          <TaskSidebar
+            {...actions}
+            task={task}
+            ai={{
+              ...AI_Actions,
+              getEstimation: async () => {
+                await handleRunAiAnalysis();
+              },
+            }}
+          />
         </div>
       </div>
     </div>

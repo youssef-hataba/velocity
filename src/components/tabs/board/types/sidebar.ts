@@ -1,4 +1,5 @@
 import type { Priority, Status, Task } from "@/types/board";
+import type { TaskAIResult } from "../hooks/useTaskAI";
 
 export interface TaskUpdate {
   status?: Status;
@@ -10,6 +11,7 @@ export interface TaskUpdate {
 
 export interface SidebarProps {
   task: Task | null;
+  ai: TaskAIResult;
   status: Status;
   priority: Priority;
   startDate: string;

@@ -1,4 +1,5 @@
 import type {SidebarProps} from "../../types/sidebar";
+import { AIForecaster } from "../AI/AIForecaster";
 import {TaskMetrics} from "./TaskMetrics";
 import {TaskTimeline} from "./TaskTimeline";
 
@@ -13,6 +14,12 @@ export const TaskSidebar = (props: SidebarProps) => {
         setPriority={props.setPriority}
         onSync={props.handleSyncData}
       />
+
+      <AIForecaster 
+          estimation={props.ai.estimation}
+          isLoading={props.ai.isEstimating}
+          onEstimate={() => props.ai.getEstimation(props.task?.title || "", props.task?.subTasks || [])}
+        />
 
       <TaskTimeline
         task={props.task}

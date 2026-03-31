@@ -7,7 +7,7 @@ interface MilestoneInputProps {
 }
 
 export const MilestoneInput = ({ value, onChange, onAdd }: MilestoneInputProps) => {
-  const LIMIT = 80;
+  const LIMIT = 180;
   const isOverLimit = value.length > LIMIT;
   const isEmpty = value.trim() === "";
 
