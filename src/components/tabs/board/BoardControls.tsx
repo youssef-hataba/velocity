@@ -44,14 +44,16 @@ export const BoardControls = ({
       <div className="relative group min-w-[320px]">
         <Search 
           size={16} 
-          className="absolute left-4 top-1/2 -translate-y-1/2 text-muted/20 group-focus-within:text-primary transition-colors duration-300" 
+          className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 group-focus-within:text-primary 
+          transition-colors duration-300" 
         />
         <input 
           type="text"
           placeholder="SEARCH SEQUENCES..."
           value={searchQuery}
           onChange={onSearchChange}
-          className="w-full bg-steel/5 border border-white/5 rounded-2xl py-3.5 pl-12 pr-4 text-[10px] font-black tracking-widest focus:outline-none focus:border-primary/30 focus:bg-steel/10 transition-all placeholder:text-muted/20 text-foreground"
+          className="w-full bg-steel/5 border border-primary/20 rounded-2xl py-3.5 pl-12 pr-4 text-[10px] font-black 
+          tracking-widest focus:outline-none focus:border-primary/40 focus:bg-steel/10 transition-all placeholder:text-muted/20 text-foreground"
         />
       </div>
 
