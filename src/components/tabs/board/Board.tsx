@@ -7,10 +7,8 @@ import {
   PointerSensor, 
   useSensor, 
   useSensors,
-  defaultDropAnimationSideEffects,
   type DragStartEvent, 
   type DragEndEvent,
-  type DropAnimation
 } from "@dnd-kit/core";
 import { sortableKeyboardCoordinates } from "@dnd-kit/sortable";
 import { LayoutGrid } from "lucide-react";
@@ -89,15 +87,12 @@ const Board = () => {
     const task = filteredAndSortedTasks.find((t) => t.id === active.id);
     if (task) {
       setActiveTask(task);
-      document.body.style.overflow = "hidden";
     }
   };
 
   const handleDragEnd = (event: DragEndEvent) => {
     const { active, over } = event;
     setActiveTask(null);
-    document.body.style.overflow = "";
-
     if (!over) return;
 
     const taskId = active.id as string;
@@ -110,16 +105,6 @@ const Board = () => {
     if (newStatus) {
       moveTask(taskId, newStatus);
     }
-  };
-
-  const dropAnimation: DropAnimation = {
-    sideEffects: defaultDropAnimationSideEffects({
-      styles: {
-        active: {
-          opacity: "0.5",
-        },
-      },
-    }),
   };
 
   if (!activeProject) {
@@ -174,7 +159,7 @@ const Board = () => {
         onOpenChange={setIsCreateModalOpen}
       />
 
-      <DragOverlay dropAnimation={dropAnimation}>
+      <DragOverlay>
         {activeTask ? (
           <div className="cursor-grabbing scale-105 rotate-2 transition-transform duration-200 shadow-2xl">
             <TaskCard task={activeTask} index={0} isOverlay />
