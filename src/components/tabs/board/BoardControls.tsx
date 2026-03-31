@@ -40,8 +40,9 @@ export const BoardControls = ({
   const currentSortLabel = sortOptions.find(opt => opt.value === sortBy)?.label;
 
   return (
-    <div className="flex flex-wrap items-center justify-between gap-4 px-2">
-      <div className="relative group min-w-[320px]">
+    <div className="flex flex-col lg:flex-row lg:items-center justify-between gap-4 px-2">
+      {/* Search Input Container */}
+      <div className="relative group w-full lg:min-w-[320px] lg:w-auto">
         <Search 
           size={16} 
           className="absolute left-4 top-1/2 -translate-y-1/2 text-primary/50 group-focus-within:text-primary 
@@ -57,27 +58,33 @@ export const BoardControls = ({
         />
       </div>
 
-      <div className="flex items-center gap-4">
-        <div className="flex bg-steel/5 p-1 rounded-2xl border border-white/5 backdrop-blur-md shadow-inner">
-          {priorities.map((p) => (
-            <button
-              key={p}
-              onClick={() => onPriorityChange(p)}
-              className={`px-4 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all duration-500 ${
-                activePriority === p 
-                ? "bg-primary text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]" 
-                : "text-muted/40 hover:text-muted/60"
-              }`}
-            >
-              {p}
-            </button>
-          ))}
+      {/* Filters and Sort Container */}
+      <div className="flex flex-col sm:flex-row items-center gap-4 w-full lg:w-auto">
+        
+        {/* Priority Filter - Scrollable on very small screens */}
+        <div className="flex bg-steel/5 p-1 rounded-2xl border border-white/5 backdrop-blur-md shadow-inner w-full sm:w-auto overflow-x-auto no-scrollbar">
+          <div className="flex min-w-full sm:min-w-0">
+            {priorities.map((p) => (
+              <button
+                key={p}
+                onClick={() => onPriorityChange(p)}
+                className={`flex-1 sm:flex-none px-4 py-1.5 rounded-xl text-[9px] font-black uppercase tracking-widest transition-all duration-500 whitespace-nowrap ${
+                  activePriority === p 
+                  ? "bg-primary text-white shadow-[0_0_20px_rgba(59,130,246,0.3)]" 
+                  : "text-muted/40 hover:text-muted/60"
+                }`}
+              >
+                {p}
+              </button>
+            ))}
+          </div>
         </div>
 
-        <div className="relative">
+        {/* Sort Dropdown */}
+        <div className="relative w-full sm:w-auto">
           <button
             onClick={() => setIsSortOpen(!isSortOpen)}
-            className="flex items-center gap-3 bg-steel/5 border border-white/5 rounded-2xl py-3 px-5 text-[9px] font-black uppercase tracking-widest text-muted/40 hover:text-primary hover:border-primary/20 transition-all min-w-35 justify-between group"
+            className="flex items-center gap-3 bg-steel/5 border border-white/5 rounded-2xl py-3 px-5 text-[9px] font-black uppercase tracking-widest text-muted/40 hover:text-primary hover:border-primary/20 transition-all w-full sm:min-w-40 justify-between group"
           >
             <span className="group-hover:scale-105 transition-transform">{currentSortLabel}</span>
             <ChevronDown size={14} className={`transition-transform duration-300 ${isSortOpen ? "rotate-180" : ""}`} />

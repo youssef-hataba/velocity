@@ -73,7 +73,6 @@ const Column = ({ title, status, tasks }: ColumnProps) => {
         </div>
       </div>
 
-      {/* Modal Instance for Creating New Task */}
       <TaskDetailsModal 
         task={null} 
         initialStatus={status}
