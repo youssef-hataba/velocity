@@ -19,6 +19,7 @@ import Column from "./Column";
 import { BoardHeader } from "./BoardHeader";
 import { BoardControls } from "./BoardControls";
 import TaskCard from "./TaskCard"; 
+import { TaskDetailsModal } from "./task_modal/TaskDetailsModal";
 
 import type { Status, Priority, Task } from "@/types/board";
 import { useBoardStore } from "@/store/useBoardStore";
@@ -43,6 +44,7 @@ const Board = () => {
   const [searchQuery, setSearchQuery] = useState<string>("");
   const [activePriority, setActivePriority] = useState<PriorityFilter>("all");
   const [sortBy, setSortBy] = useState<SortOption>("newest");
+  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor, {
@@ -150,6 +152,7 @@ const Board = () => {
           onPriorityChange={setActivePriority}
           sortBy={sortBy}
           onSortChange={setSortBy}
+          onCreateClick={() => setIsCreateModalOpen(true)}
         />
 
         <div className="flex-1 flex gap-8 overflow-x-auto pb-10 pr-10 custom-scrollbar scroll-smooth items-start">
@@ -163,6 +166,13 @@ const Board = () => {
           ))}
         </div>
       </div>
+
+      <TaskDetailsModal 
+        task={null} 
+        initialStatus="todo"
+        open={isCreateModalOpen}
+        onOpenChange={setIsCreateModalOpen}
+      />
 
       <DragOverlay dropAnimation={dropAnimation}>
         {activeTask ? (
