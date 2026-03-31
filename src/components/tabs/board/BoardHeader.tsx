@@ -41,10 +41,10 @@ export const BoardHeader = ({ project, tasksCount }: Props) => {
               boxShadow: `0 0 20px ${shadowColor}` 
             }}
           />
-          <h2 className="text-2xl md:text-4xl font-black tracking-tighter text-foreground drop-shadow-sm italic uppercase truncate">
+          <h2 className="text-2xl md:text-4xl font-black text-foreground drop-shadow-sm uppercase truncate">
             {project.name}
           </h2>
-          <span className="shrink-0 px-2 md:px-3 py-1 rounded-full bg-steel/10 text-muted/60 text-[9px] md:text-[10px] font-bold border border-steel/10">
+          <span className="shrink-0 px-2 md:px-3 py-1 rounded-full bg-primary/10 text-muted/60 text-[9px] md:text-[10px] font-bold border border-steel/10">
             {tasksCount} Tasks
           </span>
         </div>
