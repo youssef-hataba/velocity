@@ -29,7 +29,6 @@ export const TaskDetailsModal = ({ task, initialStatus, open, onOpenChange }: Pr
         <Dialog.Content
           key={modalKey}
           onOpenAutoFocus={(e) => e.preventDefault()}
-          // Changed w-full to w-[95%] on mobile and max-w-275 on desktop
           className="fixed left-[50%] top-[50%] z-101 w-[95%] lg:w-full max-w-275 translate-x-[-50%] translate-y-[-50%] outline-none"
         >
           <ModalInnerContent 
@@ -48,6 +47,15 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
   const deleteTask = useBoardStore((state) => state.deleteTask);
   const isEditMode = !!task;
 
+  const TITLE_LIMIT = 50;
+  const DESC_LIMIT = 500;
+
+  const isTitleOverLimit = actions.editedTitle.length > TITLE_LIMIT;
+  const isDescOverLimit = actions.editedDesc.length > DESC_LIMIT;
+  const isTitleEmpty = actions.editedTitle.trim() === "";
+  
+  const isSubmitDisabled = isTitleOverLimit || isDescOverLimit || isTitleEmpty;
+
   const handleDelete = () => {
     if (task?.id) {
       deleteTask(task.id);
@@ -56,17 +64,16 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
   };
 
   return (
-    // Adjusted rounded corners and padding for mobile
     <div className="bg-[#0c0c0e] border border-white/10 rounded-4xl lg:rounded-[3rem] shadow-2xl overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50" />
       <div className="p-6 lg:p-12 max-h-[90vh] overflow-y-auto custom-scrollbar">
         <TaskHeader
           editedTitle={actions.editedTitle}
           setEditedTitle={actions.setEditedTitle}
-          onBlur={() => actions.handleSyncData()}
+          onBlur={() => !isTitleOverLimit && actions.handleSyncData()}
           isNew={!isEditMode}
+          isTitleOverLimit={isTitleOverLimit}
         />
-        {/* Responsive Grid: 1 column on mobile, 12 on desktop */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16">
           <TaskMainContent 
             {...actions} 
@@ -74,6 +81,8 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
             isNew={!isEditMode} 
             onDeleteTask={handleDelete}
             onClose={() => onOpenChange(false)}
+            isSubmitDisabled={isSubmitDisabled}
+            isTitleOverLimit={isTitleOverLimit}
           />
           <TaskSidebar {...actions} task={task} />
         </div>
