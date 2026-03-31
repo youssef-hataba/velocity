@@ -27,7 +27,7 @@ export const TaskMainContent = (props: MainContentProps) => (
         onChange={(e) => props.setEditedDesc(e.target.value)}
         onBlur={() => props.handleSyncData()}
         rows={6}
-        className="w-full bg-white/[0.03] border border-white/5 rounded-[2rem] p-8 text-[14px] text-white/70 leading-relaxed focus:outline-none focus:border-primary/30 transition-all resize-none"
+        className="w-full bg-white/3 border border-white/5 rounded-4xl p-8 text-[14px] text-white/70 leading-relaxed focus:outline-none focus:border-primary/30 transition-all resize-none"
         placeholder="Define the mission objective..."
       />
     </section>
@@ -41,7 +41,7 @@ export const TaskMainContent = (props: MainContentProps) => (
       <div className="space-y-3">
         <AnimatePresence mode="popLayout">
           {props.localSubTasks.map((st) => (
-            <motion.div layout key={st.id} className="flex items-center gap-4 p-5 rounded-[1.8rem] bg-white/[0.02] border border-white/5 group">
+            <motion.div layout key={st.id} className="flex items-center gap-4 p-5 rounded-[1.8rem] bg-white/2 border border-white/5 group">
               <button
                 onClick={() => props.handleToggleSubTask(st.id)}
                 className={`w-6 h-6 rounded-lg border flex items-center justify-center transition-all ${st.isCompleted ? 'bg-primary border-primary' : 'border-white/10'}`}
@@ -55,7 +55,7 @@ export const TaskMainContent = (props: MainContentProps) => (
           ))}
         </AnimatePresence>
 
-        <div className="flex items-center gap-4 mt-6 p-2 pl-6 rounded-2xl bg-white/[0.03] border border-dashed border-white/10">
+        <div className="flex items-center gap-4 mt-6 p-2 pl-6 rounded-2xl bg-white/3 border border-dashed border-white/10">
           <input
             value={props.newSubTaskTitle}
             onChange={(e) => props.setNewSubTaskTitle(e.target.value)}

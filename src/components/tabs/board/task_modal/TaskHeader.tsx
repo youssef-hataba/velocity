@@ -20,7 +20,7 @@ export const TaskHeader = ({ editedTitle, setEditedTitle, onBlur, isNew }: TaskH
       />
       <div className="h-0.5 w-0 group-focus-within:w-1/2 bg-primary/50 transition-all duration-1000 mt-1" />
     </div>
-    <Dialog.Close className="p-4 rounded-[1.5rem] bg-white/5 hover:bg-white/10 text-white/20 hover:text-white transition-all border border-white/5">
+    <Dialog.Close className="p-4 rounded-3xl bg-white/5 hover:bg-white/10 text-white/20 hover:text-white transition-all border border-white/5">
       <X size={22} />
     </Dialog.Close>
   </header>
