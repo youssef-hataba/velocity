@@ -112,7 +112,7 @@ const TaskCard = ({ task, isOverlay }: TaskCardProps) => {
             </div>
             <div className="flex items-center gap-1.5 text-foreground/30 text-[9px] font-bold uppercase tracking-wider">
               <Calendar size={12} />
-              {new Date(task.createdAt).toLocaleDateString(undefined, {
+              {new Date(task.startDate || task.createdAt).toLocaleDateString(undefined, {
                 month: "short",
                 day: "numeric"
               })}
