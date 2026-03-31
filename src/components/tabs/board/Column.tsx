@@ -25,7 +25,7 @@ const Column = ({ title, status, tasks }: ColumnProps) => {
   const config = statusConfig[status];
 
   return (
-    <div className="flex flex-col w-90 min-w-70 h-full group/column relative rounded-[2.5rem] bg-surface/20 border border-steel/10 py-3 px-1 pb-0 backdrop-blur-sm transition-all duration-500">
+    <div className="flex flex-col w-90 min-w-70 h-fit max-h-146 group/column relative rounded-[2.5rem] bg-surface/20 border border-steel/10 py-3 px-1 pb-0 backdrop-blur-sm transition-all duration-500">
       <header className="relative p-5 mx-2 rounded-[1.8rem] border border-black/5 dark:border-white/5 bg-white/40 dark:bg-card/20 backdrop-blur-2xl flex items-center justify-between shadow-sm transition-all duration-500 z-10">
         <div className="flex items-center gap-3">
           <div className={`w-2.5 h-2.5 rounded-full ${config.dot} ${config.glow}`} />

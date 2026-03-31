@@ -142,7 +142,7 @@ const Board = () => {
       onDragStart={handleDragStart}
       onDragEnd={handleDragEnd}
     >
-      <div className="h-full flex flex-col gap-8">
+      <div className="flex flex-col gap-8">
         <BoardHeader project={activeProject} tasksCount={filteredAndSortedTasks.length} />
 
         <BoardControls
