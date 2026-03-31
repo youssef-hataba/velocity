@@ -12,7 +12,6 @@ interface Props {
 export const TeamTab = ({ project, tasks }: Props) => {
   const memberStats = useMemo(() => {
     const data = project.members.map((memberId) => {
-      // تعديل مهم: هنا بنربط بالتاسكات اللي الـ assigneeId بتاعها هو الـ memberId
       const userTasks = tasks.filter((t: Task) => t.assigneeId === memberId);
       const completed = userTasks.filter((t) => t.status === "done").length;
       const total = userTasks.length;
@@ -37,14 +36,14 @@ export const TeamTab = ({ project, tasks }: Props) => {
     : 0;
 
   return (
-    <div className="space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-700">
+    <div className="animate-in fade-in duration-700 py-5 pb-8">
       <TeamMetrics 
         totalMembers={project.members.length} 
         topPerformer={topPerformer} 
         avgEfficiency={avgEfficiency} 
       />
 
-      <div className="flex items-center gap-3 px-4 mb-2">
+      <div className="flex items-center gap-3 px-4 mb-2 pt-6">
         <LayoutGrid size={14} className="text-primary opacity-50" />
         <h3 className="text-[10px] font-black uppercase tracking-[0.3em] opacity-40 italic">Member Performance</h3>
       </div>
