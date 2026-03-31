@@ -56,7 +56,7 @@ export const useBoardStore = create<BoardState>()(
           history: [
             {
               action: "created this task",
-              user: "System Admin",
+              user: "Youssef Hataba",
               date: new Date().toISOString()
             }
           ]
@@ -71,7 +71,7 @@ export const useBoardStore = create<BoardState>()(
           if (t.id === taskId && t.status !== newStatus) {
             const historyEntry: TaskHistory = {
               action: `moved task from ${t.status} to ${newStatus}`,
-              user: "System Admin",
+              user: "Youssef Hataba",
               date: new Date().toISOString()
             };
 
