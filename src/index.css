@@ -115,13 +115,14 @@
 
   .custom-scrollbar::-webkit-scrollbar-track {
     background: transparent;
+    margin-block: 20px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
     background: rgba(59, 130, 246, 0.4);
     border-radius: 20px;
     border: 2px solid transparent;
-    background-clip: content-box;
+    background-clip: padding-box;
   }
 
   .dark .custom-scrollbar::-webkit-scrollbar-thumb {
