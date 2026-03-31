@@ -71,7 +71,7 @@ export const TaskTimeline = ({
                       animate={{opacity: 1, x: 0}}
                       className="relative group">
                       <div className="absolute -left-[1.6rem] md:-left-[1.85rem] top-1 w-2 md:w-2.5 h-2 md:h-2.5 rounded-full bg-white/5 border border-white/10 group-hover:border-primary/40 transition-colors" />
-                      <div className="text-white/50 leading-relaxed break-words">
+                      <div className="text-white/50 leading-relaxed wrap-break-words">
                         <span className="text-primary/60 font-bold">{entry.user}</span>
                         <span className="mx-1 text-white/20">{entry.action}</span>
                       </div>

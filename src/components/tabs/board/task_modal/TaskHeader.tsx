@@ -22,7 +22,7 @@ export const TaskHeader = ({ editedTitle, setEditedTitle, onBlur, isNew }: TaskH
       <div className="h-0.5 w-0 group-focus-within:w-1/2 bg-primary/50 transition-all duration-1000 mt-1" />
     </div>
     <Dialog.Close className="p-3 lg:p-4 rounded-2xl lg:rounded-3xl bg-white/5 hover:bg-white/10 text-white/20 hover:text-white transition-all border border-white/5">
-      <X size={20} className="lg:w-[22px]" />
+      <X size={20} className="lg:w-5.5" />
     </Dialog.Close>
   </header>
 );

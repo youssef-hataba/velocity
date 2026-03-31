@@ -42,7 +42,7 @@ export const ProjectTimeline = ({ project }: { project: Project }) => {
       const scrollPosition = (todayIndex * 60);
       scrollRef.current.scrollLeft = scrollPosition;
     }
-  }, []);
+  }, [dateRange.start,today]);
 
   const filteredTasks = useMemo(() => {
     let result = (tasksFromStore || []).filter((t) => t.projectId === project?.id);
@@ -88,7 +88,7 @@ export const ProjectTimeline = ({ project }: { project: Project }) => {
         setBy={setBy}
       />
       
-      <div className="bg-steel/5 border border-white/5 rounded-[2rem] md:rounded-[3rem] overflow-hidden backdrop-blur-md relative">
+      <div className="bg-steel/5 border border-white/5 rounded-4xl md:rounded-[3rem] overflow-hidden backdrop-blur-md relative">
         <div 
           ref={scrollRef} 
           className="overflow-x-auto custom-scrollbar scroll-smooth"
@@ -119,7 +119,7 @@ export const ProjectTimeline = ({ project }: { project: Project }) => {
             </div>
 
             {/* Tasks Rows */}
-            <div className="relative min-h-[300px] md:min-h-120">
+            <div className="relative min-h-75 md:min-h-120">
               <AnimatePresence mode="popLayout">
                 {filteredTasks.map((task) => {
                   const { left, width } = getTaskStyle(task);

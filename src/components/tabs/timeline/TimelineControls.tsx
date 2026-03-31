@@ -18,7 +18,7 @@ interface Props {
 export const TimelineControls = ({ 
   filterStatus, setFilterStatus, dateRange, setDateRange, sortBy, setBy 
 }: Props) => (
-  <div className="flex flex-col xl:flex-row gap-6 items-center justify-between bg-white/2 border border-white/5 p-4 md:p-6 rounded-[2rem] md:rounded-[2.5rem] backdrop-blur-2xl shadow-2xl w-full">
+  <div className="flex flex-col xl:flex-row gap-6 items-center justify-between bg-white/2 border border-white/5 p-4 md:p-6 rounded-4xl md:rounded-[2.5rem] backdrop-blur-2xl shadow-2xl w-full">
     
     {/* Status Filters - Scrollable on mobile */}
     <div className="w-full xl:w-auto overflow-x-auto no-scrollbar pb-2 xl:pb-0">

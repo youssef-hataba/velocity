@@ -56,7 +56,7 @@ const App = () => {
 
         {/* Main Content Area */}
         <section className="flex-1 overflow-y-auto p-4 md:p-8 bg-transparent custom-scrollbar">
-          <div className="max-w-[1600px] mx-auto h-full">
+          <div className="max-w-400 mx-auto h-full">
             {renderContent()}
           </div>
         </section>

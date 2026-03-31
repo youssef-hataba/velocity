@@ -57,7 +57,7 @@ const ModalInnerContent = ({ task, initialStatus, onOpenChange }: ModalInnerCont
 
   return (
     // Adjusted rounded corners and padding for mobile
-    <div className="bg-[#0c0c0e] border border-white/10 rounded-[2rem] lg:rounded-[3rem] shadow-2xl overflow-hidden relative">
+    <div className="bg-[#0c0c0e] border border-white/10 rounded-4xl lg:rounded-[3rem] shadow-2xl overflow-hidden relative">
       <div className="absolute top-0 left-0 w-full h-1 bg-linear-to-r from-transparent via-primary to-transparent opacity-50" />
       <div className="p-6 lg:p-12 max-h-[90vh] overflow-y-auto custom-scrollbar">
         <TaskHeader

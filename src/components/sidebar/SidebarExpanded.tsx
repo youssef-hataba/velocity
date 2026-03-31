@@ -19,10 +19,10 @@ export const SidebarExpanded = ({ isCollapsed, activeNav, onNavClick, onCollapse
       visibility: isCollapsed ? "hidden" : "visible",
     }}
     transition={{ type: "spring", stiffness: 350, damping: 35 }}
-    className="bg-card/[0.01] backdrop-blur-2xl overflow-hidden"
+    className="bg-card/1 backdrop-blur-2xl overflow-hidden"
   >
     {/* Use max-w-full to prevent overflow on mobile */}
-    <div className="w-[280px] max-w-full flex flex-col p-6 md:p-8 gap-6 md:gap-10 h-full border-r border-border/10">
+    <div className="w-70 max-w-full flex flex-col p-6 md:p-8 gap-6 md:gap-10 h-full border-r border-border/10">
       {/* Navigation */}
       <section>
         <div className="flex items-center justify-between mb-4 md:mb-6 px-1">
@@ -69,13 +69,13 @@ export const SidebarExpanded = ({ isCollapsed, activeNav, onNavClick, onCollapse
           <input 
             type="text" 
             placeholder="Find anything..." 
-            className="w-full bg-secondary/30 border border-white/[0.03] focus:border-primary/30 rounded-[1.1rem] py-3 md:py-3.5 pl-12 pr-4 text-xs font-semibold outline-none transition-all placeholder:text-muted-foreground/20" 
+            className="w-full bg-secondary/30 border border-white/3 focus:border-primary/30 rounded-[1.1rem] py-3 md:py-3.5 pl-12 pr-4 text-xs font-semibold outline-none transition-all placeholder:text-muted-foreground/20" 
           />
         </div>
       </section>
 
       {/* Analytics Card - Hidden or minimized on small mobile heights if necessary */}
-      <div className="mt-auto p-5 md:p-6 rounded-[2rem] md:rounded-[2.2rem] bg-gradient-to-br from-primary/[0.08] to-transparent border border-primary/10 relative overflow-hidden">
+      <div className="mt-auto p-5 md:p-6 rounded-4xl md:rounded-[2.2rem] bg-linear-to-br from-primary/8 to-transparent border border-primary/10 relative overflow-hidden">
         <div className="absolute -top-10 -right-10 w-24 h-24 bg-primary/10 blur-2xl rounded-full" />
         <p className="text-[9px] font-black uppercase tracking-[0.2em] text-primary mb-2 md:mb-3">Analytics</p>
         <p className="text-[11px] md:text-[12px] text-muted-foreground/80 font-bold leading-relaxed">

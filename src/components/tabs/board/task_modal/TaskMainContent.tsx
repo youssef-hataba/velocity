@@ -77,7 +77,7 @@ export const TaskMainContent = (props: MainContentProps) => {
                 >
                   {st.isCompleted && <Save size={12} className="text-black" />}
                 </button>
-                <span className={`text-[12px] font-bold break-words ${st.isCompleted ? 'line-through text-white/10' : 'text-white/80'}`}>
+                <span className={`text-[12px] font-bold wrap-break-words ${st.isCompleted ? 'line-through text-white/10' : 'text-white/80'}`}>
                   {st.title}
                 </span>
               </motion.div>

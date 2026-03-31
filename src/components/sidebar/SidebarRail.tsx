@@ -58,11 +58,11 @@ export const SidebarRail = ({ projects, activeProjectId, onSelectProject }: Side
         <Dialog open={open} onOpenChange={setOpen}>
           <DialogTrigger asChild>
             <button className="w-9 h-9 md:w-10 md:h-10 rounded-xl border-2 border-dashed border-steel/20 flex items-center justify-center text-muted/30 hover:text-primary hover:border-primary/50 transition-all active:scale-90 shrink-0">
-              <Plus size={18} className="md:size-[20px]" />
+              <Plus size={18} className="md:size-5" />
             </button>
           </DialogTrigger>
 
-          <DialogContent className="w-[90vw] sm:max-w-100 rounded-[2rem] md:rounded-[2.5rem] bg-card/90 backdrop-blur-2xl border-white/10 shadow-2xl focus:outline-none border-none p-6 md:p-10">
+          <DialogContent className="w-[90vw] sm:max-w-100 rounded-4xl md:rounded-[2.5rem] bg-card/90 backdrop-blur-2xl border-white/10 shadow-2xl focus:outline-none border-none p-6 md:p-10">
             <DialogHeader>
               <DialogTitle className="text-xl md:text-2xl font-black tracking-tighter text-center uppercase italic">
                 New Project
@@ -77,7 +77,7 @@ export const SidebarRail = ({ projects, activeProjectId, onSelectProject }: Side
       {/* Settings Action */}
       <div className="mt-auto pb-2 shrink-0">
         <button className="text-muted/40 hover:text-foreground transition-all p-2 md:p-3 hover:bg-secondary/50 rounded-xl group">
-          <Settings size={18} className="md:size-[20px] group-hover:rotate-90 transition-transform duration-500" />
+          <Settings size={18} className="md:size-5 group-hover:rotate-90 transition-transform duration-500" />
         </button>
       </div>
     </div>

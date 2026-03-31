@@ -32,7 +32,7 @@ const Sidebar = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={toggleCollapse}
-            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[45] md:hidden"
+            className="fixed inset-0 bg-black/60 backdrop-blur-sm z-45 md:hidden"
           />
         )}
       </AnimatePresence>
